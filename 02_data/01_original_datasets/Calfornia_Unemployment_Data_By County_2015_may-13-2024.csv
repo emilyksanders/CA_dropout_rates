@@ -1,0 +1,709 @@
+Year,Period,Area,Adjusted,Preliminary,Labor Force,Employment,Unemployment,Unemployment Rate
+2015,Jan,Alameda County,Not Adj,Not Prelim,811500,767600,43900,5.4
+2015,Feb,Alameda County,Not Adj,Not Prelim,813100,771600,41600,5.1
+2015,Mar,Alameda County,Not Adj,Not Prelim,815300,774300,41000,5
+2015,Apr,Alameda County,Not Adj,Not Prelim,813600,775700,37900,4.7
+2015,May,Alameda County,Not Adj,Not Prelim,818500,780300,38100,4.7
+2015,Jun,Alameda County,Not Adj,Not Prelim,818800,778200,40500,5
+2015,Jul,Alameda County,Not Adj,Not Prelim,824800,782600,42100,5.1
+2015,Aug,Alameda County,Not Adj,Not Prelim,822000,782200,39800,4.8
+2015,Sep,Alameda County,Not Adj,Not Prelim,820300,783900,36400,4.4
+2015,Oct,Alameda County,Not Adj,Not Prelim,822200,785100,37100,4.5
+2015,Nov,Alameda County,Not Adj,Not Prelim,823800,787500,36300,4.4
+2015,Dec,Alameda County,Not Adj,Not Prelim,824300,789700,34600,4.2
+2015,Jan,Alpine County,Not Adj,Not Prelim,570,530,40,6.5
+2015,Feb,Alpine County,Not Adj,Not Prelim,560,520,40,6.8
+2015,Mar,Alpine County,Not Adj,Not Prelim,540,500,40,7.6
+2015,Apr,Alpine County,Not Adj,Not Prelim,590,540,40,7.2
+2015,May,Alpine County,Not Adj,Not Prelim,530,490,40,8.2
+2015,Jun,Alpine County,Not Adj,Not Prelim,520,480,50,9
+2015,Jul,Alpine County,Not Adj,Not Prelim,530,480,40,8.3
+2015,Aug,Alpine County,Not Adj,Not Prelim,530,490,40,7.5
+2015,Sep,Alpine County,Not Adj,Not Prelim,530,490,40,7.6
+2015,Oct,Alpine County,Not Adj,Not Prelim,510,470,40,7.9
+2015,Nov,Alpine County,Not Adj,Not Prelim,540,500,40,6.8
+2015,Dec,Alpine County,Not Adj,Not Prelim,650,610,40,5.6
+2015,Jan,Amador County,Not Adj,Not Prelim,14230,13080,1140,8
+2015,Feb,Amador County,Not Adj,Not Prelim,14250,13170,1080,7.6
+2015,Mar,Amador County,Not Adj,Not Prelim,14310,13240,1070,7.4
+2015,Apr,Amador County,Not Adj,Not Prelim,14320,13350,970,6.8
+2015,May,Amador County,Not Adj,Not Prelim,14460,13530,930,6.4
+2015,Jun,Amador County,Not Adj,Not Prelim,14510,13560,950,6.6
+2015,Jul,Amador County,Not Adj,Not Prelim,14540,13570,960,6.6
+2015,Aug,Amador County,Not Adj,Not Prelim,14450,13560,890,6.2
+2015,Sep,Amador County,Not Adj,Not Prelim,14350,13530,820,5.7
+2015,Oct,Amador County,Not Adj,Not Prelim,14250,13400,860,6
+2015,Nov,Amador County,Not Adj,Not Prelim,14130,13250,880,6.2
+2015,Dec,Amador County,Not Adj,Not Prelim,14000,13140,860,6.2
+2015,Jan,Butte County,Not Adj,Not Prelim,100600,92000,8700,8.6
+2015,Feb,Butte County,Not Adj,Not Prelim,101200,93000,8200,8.1
+2015,Mar,Butte County,Not Adj,Not Prelim,101100,93100,8000,7.9
+2015,Apr,Butte County,Not Adj,Not Prelim,100700,93600,7200,7.1
+2015,May,Butte County,Not Adj,Not Prelim,101800,94700,7100,6.9
+2015,Jun,Butte County,Not Adj,Not Prelim,100900,93300,7600,7.6
+2015,Jul,Butte County,Not Adj,Not Prelim,100500,92800,7700,7.7
+2015,Aug,Butte County,Not Adj,Not Prelim,100700,93700,7000,7
+2015,Sep,Butte County,Not Adj,Not Prelim,101200,94900,6300,6.2
+2015,Oct,Butte County,Not Adj,Not Prelim,101900,95600,6300,6.2
+2015,Nov,Butte County,Not Adj,Not Prelim,101200,94400,6700,6.6
+2015,Dec,Butte County,Not Adj,Not Prelim,100900,94100,6800,6.8
+2015,Jan,Calaveras County,Not Adj,Not Prelim,20310,18790,1520,7.5
+2015,Feb,Calaveras County,Not Adj,Not Prelim,20360,18900,1460,7.2
+2015,Mar,Calaveras County,Not Adj,Not Prelim,20370,18950,1420,7
+2015,Apr,Calaveras County,Not Adj,Not Prelim,20470,19150,1320,6.5
+2015,May,Calaveras County,Not Adj,Not Prelim,20700,19400,1300,6.3
+2015,Jun,Calaveras County,Not Adj,Not Prelim,20800,19450,1350,6.5
+2015,Jul,Calaveras County,Not Adj,Not Prelim,20830,19430,1400,6.7
+2015,Aug,Calaveras County,Not Adj,Not Prelim,20700,19440,1260,6.1
+2015,Sep,Calaveras County,Not Adj,Not Prelim,20380,19210,1170,5.8
+2015,Oct,Calaveras County,Not Adj,Not Prelim,20500,19300,1200,5.9
+2015,Nov,Calaveras County,Not Adj,Not Prelim,20520,19320,1200,5.9
+2015,Dec,Calaveras County,Not Adj,Not Prelim,20660,19440,1220,5.9
+2015,Jan,Colusa County,Not Adj,Not Prelim,10740,8200,2540,23.7
+2015,Feb,Colusa County,Not Adj,Not Prelim,10900,8390,2510,23
+2015,Mar,Colusa County,Not Adj,Not Prelim,10790,8450,2340,21.7
+2015,Apr,Colusa County,Not Adj,Not Prelim,10760,8990,1770,16.4
+2015,May,Colusa County,Not Adj,Not Prelim,11120,9620,1490,13.4
+2015,Jun,Colusa County,Not Adj,Not Prelim,11180,9720,1470,13.1
+2015,Jul,Colusa County,Not Adj,Not Prelim,11530,10210,1320,11.4
+2015,Aug,Colusa County,Not Adj,Not Prelim,11630,10490,1140,9.8
+2015,Sep,Colusa County,Not Adj,Not Prelim,11490,10450,1040,9.1
+2015,Oct,Colusa County,Not Adj,Not Prelim,11200,10000,1200,10.7
+2015,Nov,Colusa County,Not Adj,Not Prelim,10600,8920,1670,15.8
+2015,Dec,Colusa County,Not Adj,Not Prelim,10690,8670,2020,18.9
+2015,Jan,Contra Costa County,Not Adj,Not Prelim,540400,509200,31200,5.8
+2015,Feb,Contra Costa County,Not Adj,Not Prelim,541400,511500,29900,5.5
+2015,Mar,Contra Costa County,Not Adj,Not Prelim,542800,513600,29200,5.4
+2015,Apr,Contra Costa County,Not Adj,Not Prelim,541200,514400,26900,5
+2015,May,Contra Costa County,Not Adj,Not Prelim,544700,517700,26900,4.9
+2015,Jun,Contra Costa County,Not Adj,Not Prelim,544700,516000,28700,5.3
+2015,Jul,Contra Costa County,Not Adj,Not Prelim,548500,518900,29600,5.4
+2015,Aug,Contra Costa County,Not Adj,Not Prelim,546400,518800,27700,5.1
+2015,Sep,Contra Costa County,Not Adj,Not Prelim,545000,519600,25400,4.7
+2015,Oct,Contra Costa County,Not Adj,Not Prelim,546200,520400,25900,4.7
+2015,Nov,Contra Costa County,Not Adj,Not Prelim,547100,521800,25300,4.6
+2015,Dec,Contra Costa County,Not Adj,Not Prelim,547100,522900,24200,4.4
+2015,Jan,Del Norte County,Not Adj,Not Prelim,9820,8840,980,10
+2015,Feb,Del Norte County,Not Adj,Not Prelim,9760,8790,970,9.9
+2015,Mar,Del Norte County,Not Adj,Not Prelim,9820,8860,960,9.8
+2015,Apr,Del Norte County,Not Adj,Not Prelim,9910,9040,870,8.8
+2015,May,Del Norte County,Not Adj,Not Prelim,9990,9180,810,8.1
+2015,Jun,Del Norte County,Not Adj,Not Prelim,10090,9250,840,8.4
+2015,Jul,Del Norte County,Not Adj,Not Prelim,9740,8890,850,8.7
+2015,Aug,Del Norte County,Not Adj,Not Prelim,9840,9050,790,8.1
+2015,Sep,Del Norte County,Not Adj,Not Prelim,10010,9300,710,7.1
+2015,Oct,Del Norte County,Not Adj,Not Prelim,9840,9100,750,7.6
+2015,Nov,Del Norte County,Not Adj,Not Prelim,9780,8990,790,8.1
+2015,Dec,Del Norte County,Not Adj,Not Prelim,9680,8840,840,8.6
+2015,Jan,El Dorado County,Not Adj,Not Prelim,87800,81900,5900,6.7
+2015,Feb,El Dorado County,Not Adj,Not Prelim,87700,82100,5600,6.4
+2015,Mar,El Dorado County,Not Adj,Not Prelim,87900,82400,5500,6.3
+2015,Apr,El Dorado County,Not Adj,Not Prelim,87600,82400,5200,5.9
+2015,May,El Dorado County,Not Adj,Not Prelim,88000,82900,5000,5.7
+2015,Jun,El Dorado County,Not Adj,Not Prelim,88000,82900,5100,5.8
+2015,Jul,El Dorado County,Not Adj,Not Prelim,88300,83100,5200,5.9
+2015,Aug,El Dorado County,Not Adj,Not Prelim,87800,83000,4800,5.4
+2015,Sep,El Dorado County,Not Adj,Not Prelim,87500,83100,4400,5.1
+2015,Oct,El Dorado County,Not Adj,Not Prelim,87900,83300,4600,5.2
+2015,Nov,El Dorado County,Not Adj,Not Prelim,88200,83500,4700,5.3
+2015,Dec,El Dorado County,Not Adj,Not Prelim,88200,83600,4600,5.2
+2015,Jan,Fresno County,Not Adj,Not Prelim,438800,385300,53500,12.2
+2015,Feb,Fresno County,Not Adj,Not Prelim,440400,387900,52500,11.9
+2015,Mar,Fresno County,Not Adj,Not Prelim,441700,389200,52500,11.9
+2015,Apr,Fresno County,Not Adj,Not Prelim,440700,393800,46900,10.6
+2015,May,Fresno County,Not Adj,Not Prelim,445200,401000,44200,9.9
+2015,Jun,Fresno County,Not Adj,Not Prelim,444700,399900,44800,10.1
+2015,Jul,Fresno County,Not Adj,Not Prelim,443000,399200,43800,9.9
+2015,Aug,Fresno County,Not Adj,Not Prelim,440200,400200,40000,9.1
+2015,Sep,Fresno County,Not Adj,Not Prelim,440000,403000,37000,8.4
+2015,Oct,Fresno County,Not Adj,Not Prelim,438100,397800,40300,9.2
+2015,Nov,Fresno County,Not Adj,Not Prelim,435100,392300,42800,9.8
+2015,Dec,Fresno County,Not Adj,Not Prelim,435900,392500,43300,9.9
+2015,Jan,Glenn County,Not Adj,Not Prelim,12970,11560,1410,10.8
+2015,Feb,Glenn County,Not Adj,Not Prelim,13010,11680,1330,10.3
+2015,Mar,Glenn County,Not Adj,Not Prelim,13110,11850,1260,9.6
+2015,Apr,Glenn County,Not Adj,Not Prelim,12910,11730,1190,9.2
+2015,May,Glenn County,Not Adj,Not Prelim,13060,11940,1120,8.6
+2015,Jun,Glenn County,Not Adj,Not Prelim,12850,11690,1170,9.1
+2015,Jul,Glenn County,Not Adj,Not Prelim,12800,11600,1200,9.4
+2015,Aug,Glenn County,Not Adj,Not Prelim,12950,11890,1060,8.2
+2015,Sep,Glenn County,Not Adj,Not Prelim,13210,12300,910,6.9
+2015,Oct,Glenn County,Not Adj,Not Prelim,13260,12380,880,6.6
+2015,Nov,Glenn County,Not Adj,Not Prelim,12750,11740,1010,7.9
+2015,Dec,Glenn County,Not Adj,Not Prelim,12690,11580,1110,8.8
+2015,Jan,Humboldt County,Not Adj,Not Prelim,62000,57800,4200,6.7
+2015,Feb,Humboldt County,Not Adj,Not Prelim,62500,58500,3900,6.3
+2015,Mar,Humboldt County,Not Adj,Not Prelim,62500,58600,3900,6.2
+2015,Apr,Humboldt County,Not Adj,Not Prelim,62200,58700,3500,5.6
+2015,May,Humboldt County,Not Adj,Not Prelim,62800,59400,3300,5.3
+2015,Jun,Humboldt County,Not Adj,Not Prelim,62300,58800,3500,5.6
+2015,Jul,Humboldt County,Not Adj,Not Prelim,61700,58000,3700,6
+2015,Aug,Humboldt County,Not Adj,Not Prelim,61600,58200,3400,5.6
+2015,Sep,Humboldt County,Not Adj,Not Prelim,62600,59600,3000,4.8
+2015,Oct,Humboldt County,Not Adj,Not Prelim,62400,59300,3100,5
+2015,Nov,Humboldt County,Not Adj,Not Prelim,62900,59700,3200,5.1
+2015,Dec,Humboldt County,Not Adj,Not Prelim,62000,58700,3300,5.3
+2015,Jan,Imperial County,Not Adj,Not Prelim,76200,58000,18200,23.9
+2015,Feb,Imperial County,Not Adj,Not Prelim,75600,58300,17300,22.9
+2015,Mar,Imperial County,Not Adj,Not Prelim,75300,57700,17600,23.4
+2015,Apr,Imperial County,Not Adj,Not Prelim,76600,57600,19000,24.8
+2015,May,Imperial County,Not Adj,Not Prelim,78000,59300,18700,24
+2015,Jun,Imperial County,Not Adj,Not Prelim,78000,58500,19600,25.1
+2015,Jul,Imperial County,Not Adj,Not Prelim,78300,56500,21800,27.8
+2015,Aug,Imperial County,Not Adj,Not Prelim,78000,56700,21300,27.3
+2015,Sep,Imperial County,Not Adj,Not Prelim,77300,57600,19700,25.5
+2015,Oct,Imperial County,Not Adj,Not Prelim,76700,57600,19100,24.9
+2015,Nov,Imperial County,Not Adj,Not Prelim,76000,58300,17800,23.4
+2015,Dec,Imperial County,Not Adj,Not Prelim,75000,58400,16600,22.1
+2015,Jan,Inyo County,Not Adj,Not Prelim,9070,8430,640,7.1
+2015,Feb,Inyo County,Not Adj,Not Prelim,9040,8420,620,6.9
+2015,Mar,Inyo County,Not Adj,Not Prelim,9080,8480,600,6.6
+2015,Apr,Inyo County,Not Adj,Not Prelim,9050,8530,520,5.7
+2015,May,Inyo County,Not Adj,Not Prelim,9170,8680,490,5.4
+2015,Jun,Inyo County,Not Adj,Not Prelim,9280,8770,510,5.5
+2015,Jul,Inyo County,Not Adj,Not Prelim,9290,8750,530,5.7
+2015,Aug,Inyo County,Not Adj,Not Prelim,9210,8720,490,5.3
+2015,Sep,Inyo County,Not Adj,Not Prelim,9150,8700,460,5
+2015,Oct,Inyo County,Not Adj,Not Prelim,8930,8460,480,5.3
+2015,Nov,Inyo County,Not Adj,Not Prelim,8860,8350,510,5.8
+2015,Dec,Inyo County,Not Adj,Not Prelim,8860,8350,510,5.7
+2015,Jan,Kern County,Not Adj,Not Prelim,393200,348800,44300,11.3
+2015,Feb,Kern County,Not Adj,Not Prelim,393000,348300,44700,11.4
+2015,Mar,Kern County,Not Adj,Not Prelim,385000,339100,45900,11.9
+2015,Apr,Kern County,Not Adj,Not Prelim,388600,346800,41800,10.8
+2015,May,Kern County,Not Adj,Not Prelim,394500,354200,40300,10.2
+2015,Jun,Kern County,Not Adj,Not Prelim,389700,347900,41700,10.7
+2015,Jul,Kern County,Not Adj,Not Prelim,391500,351300,40200,10.3
+2015,Aug,Kern County,Not Adj,Not Prelim,393900,356800,37100,9.4
+2015,Sep,Kern County,Not Adj,Not Prelim,391700,357300,34400,8.8
+2015,Oct,Kern County,Not Adj,Not Prelim,390700,355800,34900,8.9
+2015,Nov,Kern County,Not Adj,Not Prelim,386400,350100,36300,9.4
+2015,Dec,Kern County,Not Adj,Not Prelim,383700,344200,39500,10.3
+2015,Jan,Kings County,Not Adj,Not Prelim,57800,50300,7400,12.9
+2015,Feb,Kings County,Not Adj,Not Prelim,57600,50400,7200,12.5
+2015,Mar,Kings County,Not Adj,Not Prelim,57800,50600,7200,12.5
+2015,Apr,Kings County,Not Adj,Not Prelim,57800,51500,6400,11
+2015,May,Kings County,Not Adj,Not Prelim,58900,53000,5900,10
+2015,Jun,Kings County,Not Adj,Not Prelim,58100,51900,6200,10.7
+2015,Jul,Kings County,Not Adj,Not Prelim,58500,52700,5700,9.8
+2015,Aug,Kings County,Not Adj,Not Prelim,57900,52600,5200,9.1
+2015,Sep,Kings County,Not Adj,Not Prelim,57300,52500,4800,8.4
+2015,Oct,Kings County,Not Adj,Not Prelim,57400,52000,5400,9.4
+2015,Nov,Kings County,Not Adj,Not Prelim,56800,51100,5800,10.2
+2015,Dec,Kings County,Not Adj,Not Prelim,57000,51000,6000,10.4
+2015,Jan,Lake County,Not Adj,Not Prelim,28820,26100,2720,9.4
+2015,Feb,Lake County,Not Adj,Not Prelim,29130,26570,2560,8.8
+2015,Mar,Lake County,Not Adj,Not Prelim,29150,26680,2470,8.5
+2015,Apr,Lake County,Not Adj,Not Prelim,29160,26970,2190,7.5
+2015,May,Lake County,Not Adj,Not Prelim,29620,27510,2100,7.1
+2015,Jun,Lake County,Not Adj,Not Prelim,29260,27090,2170,7.4
+2015,Jul,Lake County,Not Adj,Not Prelim,28710,26560,2150,7.5
+2015,Aug,Lake County,Not Adj,Not Prelim,29680,27670,2010,6.8
+2015,Sep,Lake County,Not Adj,Not Prelim,28900,27010,1890,6.5
+2015,Oct,Lake County,Not Adj,Not Prelim,28510,26440,2060,7.2
+2015,Nov,Lake County,Not Adj,Not Prelim,28570,26440,2130,7.4
+2015,Dec,Lake County,Not Adj,Not Prelim,28580,26430,2150,7.5
+2015,Jan,Lassen County,Not Adj,Not Prelim,11100,10060,1040,9.4
+2015,Feb,Lassen County,Not Adj,Not Prelim,11000,10000,1000,9.1
+2015,Mar,Lassen County,Not Adj,Not Prelim,10600,9670,930,8.7
+2015,Apr,Lassen County,Not Adj,Not Prelim,10570,9760,810,7.7
+2015,May,Lassen County,Not Adj,Not Prelim,10800,10060,740,6.9
+2015,Jun,Lassen County,Not Adj,Not Prelim,10780,10040,740,6.8
+2015,Jul,Lassen County,Not Adj,Not Prelim,10570,9840,730,6.9
+2015,Aug,Lassen County,Not Adj,Not Prelim,10520,9840,680,6.5
+2015,Sep,Lassen County,Not Adj,Not Prelim,10660,10040,610,5.8
+2015,Oct,Lassen County,Not Adj,Not Prelim,11370,10740,630,5.5
+2015,Nov,Lassen County,Not Adj,Not Prelim,10940,10230,710,6.5
+2015,Dec,Lassen County,Not Adj,Not Prelim,10230,9460,770,7.5
+2015,Jan,Los Angeles County,Not Adj,Not Prelim,4998700,4606800,391800,7.8
+2015,Jan,Los Angeles County,Adj,Not Prelim,5002900,4624200,378700,7.6
+2015,Feb,Los Angeles County,Not Adj,Not Prelim,5006800,4634800,372000,7.4
+2015,Feb,Los Angeles County,Adj,Not Prelim,5001200,4627500,373700,7.5
+2015,Mar,Los Angeles County,Not Adj,Not Prelim,4985300,4630600,354800,7.1
+2015,Mar,Los Angeles County,Adj,Not Prelim,4999300,4631300,368000,7.4
+2015,Apr,Los Angeles County,Not Adj,Not Prelim,4995700,4656800,338900,6.8
+2015,Apr,Los Angeles County,Adj,Not Prelim,4995000,4634500,360500,7.2
+2015,May,Los Angeles County,Not Adj,Not Prelim,5009100,4665000,344200,6.9
+2015,May,Los Angeles County,Adj,Not Prelim,4986900,4636300,350600,7
+2015,Jun,Los Angeles County,Not Adj,Not Prelim,4966500,4623100,343400,6.9
+2015,Jun,Los Angeles County,Adj,Not Prelim,4975800,4637000,338800,6.8
+2015,Jul,Los Angeles County,Not Adj,Not Prelim,4979600,4619000,360600,7.2
+2015,Jul,Los Angeles County,Adj,Not Prelim,4963800,4637600,326200,6.6
+2015,Aug,Los Angeles County,Not Adj,Not Prelim,4931900,4599000,332800,6.7
+2015,Aug,Los Angeles County,Adj,Not Prelim,4953300,4638800,314500,6.3
+2015,Sep,Los Angeles County,Not Adj,Not Prelim,4949900,4645200,304700,6.2
+2015,Sep,Los Angeles County,Adj,Not Prelim,4947000,4642600,304400,6.2
+2015,Oct,Los Angeles County,Not Adj,Not Prelim,4945000,4650700,294300,6
+2015,Oct,Los Angeles County,Adj,Not Prelim,4947100,4650800,296300,6
+2015,Nov,Los Angeles County,Not Adj,Not Prelim,4975700,4692800,282900,5.7
+2015,Nov,Los Angeles County,Adj,Not Prelim,4954100,4663700,290300,5.9
+2015,Dec,Los Angeles County,Not Adj,Not Prelim,4940800,4668700,272100,5.5
+2015,Dec,Los Angeles County,Adj,Not Prelim,4964500,4679300,285200,5.7
+2015,Jan,Madera County,Not Adj,Not Prelim,60900,53200,7600,12.5
+2015,Feb,Madera County,Not Adj,Not Prelim,61600,54300,7400,11.9
+2015,Mar,Madera County,Not Adj,Not Prelim,59600,52100,7500,12.6
+2015,Apr,Madera County,Not Adj,Not Prelim,59200,52600,6600,11.2
+2015,May,Madera County,Not Adj,Not Prelim,60000,53800,6300,10.4
+2015,Jun,Madera County,Not Adj,Not Prelim,60200,53900,6300,10.5
+2015,Jul,Madera County,Not Adj,Not Prelim,59300,53100,6200,10.4
+2015,Aug,Madera County,Not Adj,Not Prelim,60200,54600,5600,9.2
+2015,Sep,Madera County,Not Adj,Not Prelim,60200,55100,5000,8.4
+2015,Oct,Madera County,Not Adj,Not Prelim,58800,53400,5400,9.2
+2015,Nov,Madera County,Not Adj,Not Prelim,58200,52200,6000,10.3
+2015,Dec,Madera County,Not Adj,Not Prelim,59600,53500,6100,10.2
+2015,Jan,Marin County,Not Adj,Not Prelim,137800,132200,5600,4.1
+2015,Feb,Marin County,Not Adj,Not Prelim,137700,132500,5300,3.8
+2015,Mar,Marin County,Not Adj,Not Prelim,138400,133200,5200,3.7
+2015,Apr,Marin County,Not Adj,Not Prelim,138100,133300,4800,3.5
+2015,May,Marin County,Not Adj,Not Prelim,139100,134300,4800,3.4
+2015,Jun,Marin County,Not Adj,Not Prelim,139000,133900,5100,3.7
+2015,Jul,Marin County,Not Adj,Not Prelim,140200,134800,5400,3.9
+2015,Aug,Marin County,Not Adj,Not Prelim,139800,134700,5100,3.6
+2015,Sep,Marin County,Not Adj,Not Prelim,138700,134000,4600,3.3
+2015,Oct,Marin County,Not Adj,Not Prelim,139000,134200,4800,3.4
+2015,Nov,Marin County,Not Adj,Not Prelim,138400,133800,4600,3.3
+2015,Dec,Marin County,Not Adj,Not Prelim,138000,133600,4400,3.2
+2015,Jan,Mariposa County,Not Adj,Not Prelim,7540,6750,790,10.5
+2015,Feb,Mariposa County,Not Adj,Not Prelim,7400,6620,790,10.6
+2015,Mar,Mariposa County,Not Adj,Not Prelim,7520,6780,750,9.9
+2015,Apr,Mariposa County,Not Adj,Not Prelim,7750,7180,570,7.3
+2015,May,Mariposa County,Not Adj,Not Prelim,8200,7680,530,6.4
+2015,Jun,Mariposa County,Not Adj,Not Prelim,8640,8140,510,5.9
+2015,Jul,Mariposa County,Not Adj,Not Prelim,8710,8200,510,5.8
+2015,Aug,Mariposa County,Not Adj,Not Prelim,8700,8240,460,5.3
+2015,Sep,Mariposa County,Not Adj,Not Prelim,8590,8170,430,5
+2015,Oct,Mariposa County,Not Adj,Not Prelim,7980,7520,460,5.8
+2015,Nov,Mariposa County,Not Adj,Not Prelim,7630,7090,540,7
+2015,Dec,Mariposa County,Not Adj,Not Prelim,7480,6890,590,7.8
+2015,Jan,Mendocino County,Not Adj,Not Prelim,39740,36850,2890,7.3
+2015,Feb,Mendocino County,Not Adj,Not Prelim,39740,36970,2770,7
+2015,Mar,Mendocino County,Not Adj,Not Prelim,40000,37270,2740,6.8
+2015,Apr,Mendocino County,Not Adj,Not Prelim,40040,37720,2320,5.8
+2015,May,Mendocino County,Not Adj,Not Prelim,40350,38220,2140,5.3
+2015,Jun,Mendocino County,Not Adj,Not Prelim,40450,38200,2250,5.6
+2015,Jul,Mendocino County,Not Adj,Not Prelim,39580,37340,2250,5.7
+2015,Aug,Mendocino County,Not Adj,Not Prelim,40130,38020,2110,5.3
+2015,Sep,Mendocino County,Not Adj,Not Prelim,39730,37800,1930,4.9
+2015,Oct,Mendocino County,Not Adj,Not Prelim,39620,37570,2050,5.2
+2015,Nov,Mendocino County,Not Adj,Not Prelim,39280,37090,2190,5.6
+2015,Dec,Mendocino County,Not Adj,Not Prelim,39290,36960,2330,5.9
+2015,Jan,Merced County,Not Adj,Not Prelim,113200,97000,16200,14.3
+2015,Feb,Merced County,Not Adj,Not Prelim,114300,98200,16000,14
+2015,Mar,Merced County,Not Adj,Not Prelim,114200,98600,15700,13.7
+2015,Apr,Merced County,Not Adj,Not Prelim,113300,99500,13700,12.1
+2015,May,Merced County,Not Adj,Not Prelim,114000,101100,12900,11.3
+2015,Jun,Merced County,Not Adj,Not Prelim,114800,101900,12900,11.3
+2015,Jul,Merced County,Not Adj,Not Prelim,112000,99800,12200,10.9
+2015,Aug,Merced County,Not Adj,Not Prelim,114700,103800,11000,9.6
+2015,Sep,Merced County,Not Adj,Not Prelim,116600,106700,9800,8.4
+2015,Oct,Merced County,Not Adj,Not Prelim,115800,105400,10400,9
+2015,Nov,Merced County,Not Adj,Not Prelim,113500,101000,12500,11
+2015,Dec,Merced County,Not Adj,Not Prelim,112500,99400,13000,11.6
+2015,Jan,Modoc County,Not Adj,Not Prelim,3140,2770,370,11.9
+2015,Feb,Modoc County,Not Adj,Not Prelim,3110,2750,360,11.4
+2015,Mar,Modoc County,Not Adj,Not Prelim,3220,2880,340,10.6
+2015,Apr,Modoc County,Not Adj,Not Prelim,3340,3060,280,8.5
+2015,May,Modoc County,Not Adj,Not Prelim,3360,3090,270,8.1
+2015,Jun,Modoc County,Not Adj,Not Prelim,3520,3250,270,7.6
+2015,Jul,Modoc County,Not Adj,Not Prelim,3480,3210,270,7.9
+2015,Aug,Modoc County,Not Adj,Not Prelim,3420,3170,250,7.2
+2015,Sep,Modoc County,Not Adj,Not Prelim,3390,3170,230,6.7
+2015,Oct,Modoc County,Not Adj,Not Prelim,3360,3120,240,7.1
+2015,Nov,Modoc County,Not Adj,Not Prelim,3190,2940,250,7.8
+2015,Dec,Modoc County,Not Adj,Not Prelim,3100,2820,280,9.1
+2015,Jan,Mono County,Not Adj,Not Prelim,8770,8260,510,5.8
+2015,Feb,Mono County,Not Adj,Not Prelim,8660,8170,490,5.7
+2015,Mar,Mono County,Not Adj,Not Prelim,8510,8010,500,5.9
+2015,Apr,Mono County,Not Adj,Not Prelim,7960,7410,550,6.9
+2015,May,Mono County,Not Adj,Not Prelim,7780,7140,640,8.2
+2015,Jun,Mono County,Not Adj,Not Prelim,8120,7560,560,6.9
+2015,Jul,Mono County,Not Adj,Not Prelim,8520,8030,490,5.7
+2015,Aug,Mono County,Not Adj,Not Prelim,8470,8020,450,5.3
+2015,Sep,Mono County,Not Adj,Not Prelim,7910,7480,430,5.5
+2015,Oct,Mono County,Not Adj,Not Prelim,7720,7210,510,6.6
+2015,Nov,Mono County,Not Adj,Not Prelim,7810,7300,510,6.6
+2015,Dec,Mono County,Not Adj,Not Prelim,8650,8200,460,5.3
+2015,Jan,Monterey County,Not Adj,Not Prelim,205700,179700,26000,12.6
+2015,Feb,Monterey County,Not Adj,Not Prelim,207400,182300,25100,12.1
+2015,Mar,Monterey County,Not Adj,Not Prelim,210500,187800,22800,10.8
+2015,Apr,Monterey County,Not Adj,Not Prelim,219300,201800,17500,8
+2015,May,Monterey County,Not Adj,Not Prelim,224500,208800,15700,7
+2015,Jun,Monterey County,Not Adj,Not Prelim,227500,212400,15200,6.7
+2015,Jul,Monterey County,Not Adj,Not Prelim,228400,213600,14800,6.5
+2015,Aug,Monterey County,Not Adj,Not Prelim,228800,215200,13600,5.9
+2015,Sep,Monterey County,Not Adj,Not Prelim,226500,214100,12400,5.5
+2015,Oct,Monterey County,Not Adj,Not Prelim,221000,208100,12900,5.8
+2015,Nov,Monterey County,Not Adj,Not Prelim,215000,198500,16500,7.7
+2015,Dec,Monterey County,Not Adj,Not Prelim,204600,183200,21500,10.5
+2015,Jan,Napa County,Not Adj,Not Prelim,72000,67800,4200,5.9
+2015,Feb,Napa County,Not Adj,Not Prelim,72800,69000,3800,5.2
+2015,Mar,Napa County,Not Adj,Not Prelim,73100,69400,3600,5
+2015,Apr,Napa County,Not Adj,Not Prelim,74000,70800,3200,4.3
+2015,May,Napa County,Not Adj,Not Prelim,75000,71800,3200,4.2
+2015,Jun,Napa County,Not Adj,Not Prelim,74900,71600,3300,4.4
+2015,Jul,Napa County,Not Adj,Not Prelim,74800,71400,3400,4.5
+2015,Aug,Napa County,Not Adj,Not Prelim,75000,71800,3200,4.3
+2015,Sep,Napa County,Not Adj,Not Prelim,75400,72600,2900,3.8
+2015,Oct,Napa County,Not Adj,Not Prelim,74200,71000,3200,4.3
+2015,Nov,Napa County,Not Adj,Not Prelim,72400,68800,3600,4.9
+2015,Dec,Napa County,Not Adj,Not Prelim,71100,67500,3600,5
+2015,Jan,Nevada County,Not Adj,Not Prelim,48790,45760,3030,6.2
+2015,Feb,Nevada County,Not Adj,Not Prelim,48350,45450,2910,6
+2015,Mar,Nevada County,Not Adj,Not Prelim,48140,45270,2870,6
+2015,Apr,Nevada County,Not Adj,Not Prelim,47530,44840,2690,5.7
+2015,May,Nevada County,Not Adj,Not Prelim,48010,45400,2600,5.4
+2015,Jun,Nevada County,Not Adj,Not Prelim,48320,45680,2650,5.5
+2015,Jul,Nevada County,Not Adj,Not Prelim,47890,45180,2720,5.7
+2015,Aug,Nevada County,Not Adj,Not Prelim,48390,45890,2500,5.2
+2015,Sep,Nevada County,Not Adj,Not Prelim,47650,45340,2310,4.8
+2015,Oct,Nevada County,Not Adj,Not Prelim,47450,45070,2380,5
+2015,Nov,Nevada County,Not Adj,Not Prelim,47610,45180,2430,5.1
+2015,Dec,Nevada County,Not Adj,Not Prelim,47950,45590,2360,4.9
+2015,Jan,Orange County,Not Adj,Not Prelim,1577200,1497400,79800,5.1
+2015,Feb,Orange County,Not Adj,Not Prelim,1582700,1506900,75800,4.8
+2015,Mar,Orange County,Not Adj,Not Prelim,1581500,1507100,74400,4.7
+2015,Apr,Orange County,Not Adj,Not Prelim,1573900,1505400,68500,4.4
+2015,May,Orange County,Not Adj,Not Prelim,1578600,1509900,68700,4.4
+2015,Jun,Orange County,Not Adj,Not Prelim,1580200,1506700,73500,4.7
+2015,Jul,Orange County,Not Adj,Not Prelim,1588700,1511900,76800,4.8
+2015,Aug,Orange County,Not Adj,Not Prelim,1581300,1509000,72300,4.6
+2015,Sep,Orange County,Not Adj,Not Prelim,1584700,1517900,66800,4.2
+2015,Oct,Orange County,Not Adj,Not Prelim,1593500,1525200,68300,4.3
+2015,Nov,Orange County,Not Adj,Not Prelim,1595100,1528300,66800,4.2
+2015,Dec,Orange County,Not Adj,Not Prelim,1594200,1531100,63100,4
+2015,Jan,Placer County,Not Adj,Not Prelim,175600,165300,10300,5.9
+2015,Feb,Placer County,Not Adj,Not Prelim,175600,165800,9800,5.6
+2015,Mar,Placer County,Not Adj,Not Prelim,176000,166400,9600,5.5
+2015,Apr,Placer County,Not Adj,Not Prelim,175200,166400,8900,5.1
+2015,May,Placer County,Not Adj,Not Prelim,176200,167300,8800,5
+2015,Jun,Placer County,Not Adj,Not Prelim,176700,167400,9300,5.2
+2015,Jul,Placer County,Not Adj,Not Prelim,177400,167900,9500,5.4
+2015,Aug,Placer County,Not Adj,Not Prelim,176400,167600,8800,5
+2015,Sep,Placer County,Not Adj,Not Prelim,176000,167900,8200,4.6
+2015,Oct,Placer County,Not Adj,Not Prelim,176700,168300,8400,4.7
+2015,Nov,Placer County,Not Adj,Not Prelim,177100,168800,8300,4.7
+2015,Dec,Placer County,Not Adj,Not Prelim,177100,169200,7900,4.5
+2015,Jan,Plumas County,Not Adj,Not Prelim,7600,6490,1120,14.7
+2015,Feb,Plumas County,Not Adj,Not Prelim,7550,6480,1070,14.2
+2015,Mar,Plumas County,Not Adj,Not Prelim,7610,6560,1050,13.8
+2015,Apr,Plumas County,Not Adj,Not Prelim,7580,6740,840,11
+2015,May,Plumas County,Not Adj,Not Prelim,8100,7350,760,9.3
+2015,Jun,Plumas County,Not Adj,Not Prelim,8330,7600,730,8.7
+2015,Jul,Plumas County,Not Adj,Not Prelim,8300,7600,700,8.5
+2015,Aug,Plumas County,Not Adj,Not Prelim,8360,7710,650,7.8
+2015,Sep,Plumas County,Not Adj,Not Prelim,8160,7590,580,7.1
+2015,Oct,Plumas County,Not Adj,Not Prelim,7950,7340,610,7.7
+2015,Nov,Plumas County,Not Adj,Not Prelim,7620,6850,770,10.1
+2015,Dec,Plumas County,Not Adj,Not Prelim,7530,6620,910,12.1
+2015,Jan,Riverside County,Not Adj,Not Prelim,1030000,953500,76500,7.4
+2015,Feb,Riverside County,Not Adj,Not Prelim,1029100,955800,73200,7.1
+2015,Mar,Riverside County,Not Adj,Not Prelim,1030300,958300,72000,7
+2015,Apr,Riverside County,Not Adj,Not Prelim,1024100,957400,66700,6.5
+2015,May,Riverside County,Not Adj,Not Prelim,1029000,962400,66700,6.5
+2015,Jun,Riverside County,Not Adj,Not Prelim,1028900,957000,71900,7
+2015,Jul,Riverside County,Not Adj,Not Prelim,1030700,954000,76800,7.4
+2015,Aug,Riverside County,Not Adj,Not Prelim,1029200,956400,72800,7.1
+2015,Sep,Riverside County,Not Adj,Not Prelim,1029300,962200,67100,6.5
+2015,Oct,Riverside County,Not Adj,Not Prelim,1038800,972200,66600,6.4
+2015,Nov,Riverside County,Not Adj,Not Prelim,1049700,985500,64200,6.1
+2015,Dec,Riverside County,Not Adj,Not Prelim,1052400,991200,61200,5.8
+2015,Jan,Sacramento County,Not Adj,Not Prelim,681900,635000,46800,6.9
+2015,Feb,Sacramento County,Not Adj,Not Prelim,681900,637200,44700,6.6
+2015,Mar,Sacramento County,Not Adj,Not Prelim,683100,639300,43800,6.4
+2015,Apr,Sacramento County,Not Adj,Not Prelim,679900,639500,40300,5.9
+2015,May,Sacramento County,Not Adj,Not Prelim,683200,642900,40200,5.9
+2015,Jun,Sacramento County,Not Adj,Not Prelim,686300,643600,42700,6.2
+2015,Jul,Sacramento County,Not Adj,Not Prelim,689400,645600,43800,6.4
+2015,Aug,Sacramento County,Not Adj,Not Prelim,685500,644300,41100,6
+2015,Sep,Sacramento County,Not Adj,Not Prelim,683600,645300,38300,5.6
+2015,Oct,Sacramento County,Not Adj,Not Prelim,685800,647100,38700,5.6
+2015,Nov,Sacramento County,Not Adj,Not Prelim,686900,648900,38100,5.5
+2015,Dec,Sacramento County,Not Adj,Not Prelim,687500,650800,36800,5.4
+2015,Jan,San Benito County,Not Adj,Not Prelim,29600,26800,2800,9.3
+2015,Feb,San Benito County,Not Adj,Not Prelim,29700,27000,2700,9.1
+2015,Mar,San Benito County,Not Adj,Not Prelim,29800,27100,2700,9
+2015,Apr,San Benito County,Not Adj,Not Prelim,29700,27300,2400,8.2
+2015,May,San Benito County,Not Adj,Not Prelim,29800,27500,2300,7.8
+2015,Jun,San Benito County,Not Adj,Not Prelim,29900,27700,2200,7.5
+2015,Jul,San Benito County,Not Adj,Not Prelim,29900,27800,2100,7.1
+2015,Aug,San Benito County,Not Adj,Not Prelim,29800,27800,2000,6.6
+2015,Sep,San Benito County,Not Adj,Not Prelim,29600,27800,1800,6.1
+2015,Oct,San Benito County,Not Adj,Not Prelim,29800,27900,1900,6.4
+2015,Nov,San Benito County,Not Adj,Not Prelim,29700,27600,2100,6.9
+2015,Dec,San Benito County,Not Adj,Not Prelim,29700,27500,2200,7.3
+2015,Jan,San Bernardino County,Not Adj,Not Prelim,916100,849600,66600,7.3
+2015,Feb,San Bernardino County,Not Adj,Not Prelim,916000,852600,63400,6.9
+2015,Mar,San Bernardino County,Not Adj,Not Prelim,916200,853700,62500,6.8
+2015,Apr,San Bernardino County,Not Adj,Not Prelim,911900,853500,58400,6.4
+2015,May,San Bernardino County,Not Adj,Not Prelim,914900,856400,58500,6.4
+2015,Jun,San Bernardino County,Not Adj,Not Prelim,914600,851700,62900,6.9
+2015,Jul,San Bernardino County,Not Adj,Not Prelim,915800,851200,64600,7.1
+2015,Aug,San Bernardino County,Not Adj,Not Prelim,914300,854200,60000,6.6
+2015,Sep,San Bernardino County,Not Adj,Not Prelim,914900,859400,55500,6.1
+2015,Oct,San Bernardino County,Not Adj,Not Prelim,924600,868500,56100,6.1
+2015,Nov,San Bernardino County,Not Adj,Not Prelim,934800,880500,54300,5.8
+2015,Dec,San Bernardino County,Not Adj,Not Prelim,937700,885700,51900,5.5
+2015,Jan,San Diego County,Not Adj,Not Prelim,1541000,1449800,91200,5.9
+2015,Feb,San Diego County,Not Adj,Not Prelim,1543600,1457300,86300,5.6
+2015,Mar,San Diego County,Not Adj,Not Prelim,1544200,1459200,85100,5.5
+2015,Apr,San Diego County,Not Adj,Not Prelim,1536400,1457900,78500,5.1
+2015,May,San Diego County,Not Adj,Not Prelim,1547700,1469000,78700,5.1
+2015,Jun,San Diego County,Not Adj,Not Prelim,1548000,1464600,83500,5.4
+2015,Jul,San Diego County,Not Adj,Not Prelim,1559500,1472600,86900,5.6
+2015,Aug,San Diego County,Not Adj,Not Prelim,1551600,1469600,81900,5.3
+2015,Sep,San Diego County,Not Adj,Not Prelim,1547600,1471700,75900,4.9
+2015,Oct,San Diego County,Not Adj,Not Prelim,1553400,1475900,77600,5
+2015,Nov,San Diego County,Not Adj,Not Prelim,1557500,1482100,75400,4.8
+2015,Dec,San Diego County,Not Adj,Not Prelim,1555000,1482500,72400,4.7
+2015,Jan,San Francisco County,Not Adj,Not Prelim,534200,511900,22300,4.2
+2015,Feb,San Francisco County,Not Adj,Not Prelim,536800,515700,21100,3.9
+2015,Mar,San Francisco County,Not Adj,Not Prelim,538200,517200,20900,3.9
+2015,Apr,San Francisco County,Not Adj,Not Prelim,535400,516100,19200,3.6
+2015,May,San Francisco County,Not Adj,Not Prelim,538800,519500,19300,3.6
+2015,Jun,San Francisco County,Not Adj,Not Prelim,538700,518100,20600,3.8
+2015,Jul,San Francisco County,Not Adj,Not Prelim,545900,524600,21300,3.9
+2015,Aug,San Francisco County,Not Adj,Not Prelim,545500,525500,20000,3.7
+2015,Sep,San Francisco County,Not Adj,Not Prelim,544900,526500,18400,3.4
+2015,Oct,San Francisco County,Not Adj,Not Prelim,545600,526700,18900,3.5
+2015,Nov,San Francisco County,Not Adj,Not Prelim,545800,527500,18400,3.4
+2015,Dec,San Francisco County,Not Adj,Not Prelim,547200,529500,17700,3.2
+2015,Jan,San Joaquin County,Not Adj,Not Prelim,311200,278300,33000,10.6
+2015,Feb,San Joaquin County,Not Adj,Not Prelim,312600,280600,32000,10.2
+2015,Mar,San Joaquin County,Not Adj,Not Prelim,312800,281400,31400,10
+2015,Apr,San Joaquin County,Not Adj,Not Prelim,312300,284000,28300,9.1
+2015,May,San Joaquin County,Not Adj,Not Prelim,318700,291500,27200,8.5
+2015,Jun,San Joaquin County,Not Adj,Not Prelim,315100,286500,28500,9.1
+2015,Jul,San Joaquin County,Not Adj,Not Prelim,315400,287200,28200,8.9
+2015,Aug,San Joaquin County,Not Adj,Not Prelim,315500,289500,26000,8.2
+2015,Sep,San Joaquin County,Not Adj,Not Prelim,316500,292100,24400,7.7
+2015,Oct,San Joaquin County,Not Adj,Not Prelim,315000,289800,25200,8
+2015,Nov,San Joaquin County,Not Adj,Not Prelim,313900,287300,26600,8.5
+2015,Dec,San Joaquin County,Not Adj,Not Prelim,313600,287000,26600,8.5
+2015,Jan,San Luis Obispo County,Not Adj,Not Prelim,140500,132800,7700,5.5
+2015,Feb,San Luis Obispo County,Not Adj,Not Prelim,139400,132100,7200,5.2
+2015,Mar,San Luis Obispo County,Not Adj,Not Prelim,139700,132700,7000,5
+2015,Apr,San Luis Obispo County,Not Adj,Not Prelim,139500,133100,6300,4.5
+2015,May,San Luis Obispo County,Not Adj,Not Prelim,140300,134000,6300,4.5
+2015,Jun,San Luis Obispo County,Not Adj,Not Prelim,141000,134200,6800,4.8
+2015,Jul,San Luis Obispo County,Not Adj,Not Prelim,138400,131400,7000,5.1
+2015,Aug,San Luis Obispo County,Not Adj,Not Prelim,136100,129500,6600,4.9
+2015,Sep,San Luis Obispo County,Not Adj,Not Prelim,137200,131200,6000,4.4
+2015,Oct,San Luis Obispo County,Not Adj,Not Prelim,139100,132900,6100,4.4
+2015,Nov,San Luis Obispo County,Not Adj,Not Prelim,139300,133100,6200,4.5
+2015,Dec,San Luis Obispo County,Not Adj,Not Prelim,136600,130500,6100,4.5
+2015,Jan,San Mateo County,Not Adj,Not Prelim,428600,411800,16800,3.9
+2015,Feb,San Mateo County,Not Adj,Not Prelim,430500,414600,15900,3.7
+2015,Mar,San Mateo County,Not Adj,Not Prelim,431700,416000,15700,3.6
+2015,Apr,San Mateo County,Not Adj,Not Prelim,429500,415000,14500,3.4
+2015,May,San Mateo County,Not Adj,Not Prelim,432300,417900,14500,3.4
+2015,Jun,San Mateo County,Not Adj,Not Prelim,432000,416500,15500,3.6
+2015,Jul,San Mateo County,Not Adj,Not Prelim,437800,421700,16100,3.7
+2015,Aug,San Mateo County,Not Adj,Not Prelim,437400,422500,14900,3.4
+2015,Sep,San Mateo County,Not Adj,Not Prelim,437000,423100,13900,3.2
+2015,Oct,San Mateo County,Not Adj,Not Prelim,437600,423400,14200,3.3
+2015,Nov,San Mateo County,Not Adj,Not Prelim,437800,424000,13900,3.2
+2015,Dec,San Mateo County,Not Adj,Not Prelim,438500,425400,13100,3
+2015,Jan,Santa Barbara County,Not Adj,Not Prelim,214400,200000,14400,6.7
+2015,Feb,Santa Barbara County,Not Adj,Not Prelim,217000,203500,13500,6.2
+2015,Mar,Santa Barbara County,Not Adj,Not Prelim,218600,206100,12600,5.7
+2015,Apr,Santa Barbara County,Not Adj,Not Prelim,218900,208100,10800,4.9
+2015,May,Santa Barbara County,Not Adj,Not Prelim,220300,209800,10500,4.8
+2015,Jun,Santa Barbara County,Not Adj,Not Prelim,219200,208000,11100,5.1
+2015,Jul,Santa Barbara County,Not Adj,Not Prelim,218800,207300,11500,5.2
+2015,Aug,Santa Barbara County,Not Adj,Not Prelim,217300,206500,10800,5
+2015,Sep,Santa Barbara County,Not Adj,Not Prelim,216500,206700,9900,4.6
+2015,Oct,Santa Barbara County,Not Adj,Not Prelim,216000,205400,10600,4.9
+2015,Nov,Santa Barbara County,Not Adj,Not Prelim,215200,203900,11400,5.3
+2015,Dec,Santa Barbara County,Not Adj,Not Prelim,213700,201800,11900,5.6
+2015,Jan,Santa Clara County,Not Adj,Not Prelim,1002100,954300,47800,4.8
+2015,Feb,Santa Clara County,Not Adj,Not Prelim,1005500,960300,45200,4.5
+2015,Mar,Santa Clara County,Not Adj,Not Prelim,1005100,960700,44500,4.4
+2015,Apr,Santa Clara County,Not Adj,Not Prelim,1004100,963000,41100,4.1
+2015,May,Santa Clara County,Not Adj,Not Prelim,1010300,969200,41100,4.1
+2015,Jun,Santa Clara County,Not Adj,Not Prelim,1014700,971100,43600,4.3
+2015,Jul,Santa Clara County,Not Adj,Not Prelim,1018500,973600,45000,4.4
+2015,Aug,Santa Clara County,Not Adj,Not Prelim,1016200,973900,42300,4.2
+2015,Sep,Santa Clara County,Not Adj,Not Prelim,1014800,975500,39300,3.9
+2015,Oct,Santa Clara County,Not Adj,Not Prelim,1019500,979200,40300,4
+2015,Nov,Santa Clara County,Not Adj,Not Prelim,1018100,978500,39500,3.9
+2015,Dec,Santa Clara County,Not Adj,Not Prelim,1017600,980100,37500,3.7
+2015,Jan,Santa Cruz County,Not Adj,Not Prelim,141800,127300,14600,10.3
+2015,Feb,Santa Cruz County,Not Adj,Not Prelim,142100,128000,14200,10
+2015,Mar,Santa Cruz County,Not Adj,Not Prelim,143400,129600,13800,9.6
+2015,Apr,Santa Cruz County,Not Adj,Not Prelim,143300,131800,11500,8
+2015,May,Santa Cruz County,Not Adj,Not Prelim,145200,135300,9900,6.8
+2015,Jun,Santa Cruz County,Not Adj,Not Prelim,146500,136900,9700,6.6
+2015,Jul,Santa Cruz County,Not Adj,Not Prelim,145800,136200,9600,6.6
+2015,Aug,Santa Cruz County,Not Adj,Not Prelim,144300,135500,8800,6.1
+2015,Sep,Santa Cruz County,Not Adj,Not Prelim,141300,133400,7900,5.6
+2015,Oct,Santa Cruz County,Not Adj,Not Prelim,142900,134700,8200,5.7
+2015,Nov,Santa Cruz County,Not Adj,Not Prelim,141700,131800,10000,7
+2015,Dec,Santa Cruz County,Not Adj,Not Prelim,140000,128700,11300,8.1
+2015,Jan,Shasta County,Not Adj,Not Prelim,74700,67700,7100,9.5
+2015,Feb,Shasta County,Not Adj,Not Prelim,73700,66900,6800,9.2
+2015,Mar,Shasta County,Not Adj,Not Prelim,73900,67200,6600,9
+2015,Apr,Shasta County,Not Adj,Not Prelim,73700,67800,5900,8
+2015,May,Shasta County,Not Adj,Not Prelim,74300,68700,5600,7.6
+2015,Jun,Shasta County,Not Adj,Not Prelim,74700,68900,5800,7.7
+2015,Jul,Shasta County,Not Adj,Not Prelim,74100,68300,5800,7.8
+2015,Aug,Shasta County,Not Adj,Not Prelim,74400,69000,5300,7.2
+2015,Sep,Shasta County,Not Adj,Not Prelim,74000,69100,4900,6.7
+2015,Oct,Shasta County,Not Adj,Not Prelim,74400,69400,5000,6.8
+2015,Nov,Shasta County,Not Adj,Not Prelim,73700,68500,5200,7.1
+2015,Dec,Shasta County,Not Adj,Not Prelim,73700,68300,5400,7.3
+2015,Jan,Sierra County,Not Adj,Not Prelim,1380,1210,160,11.9
+2015,Feb,Sierra County,Not Adj,Not Prelim,1330,1160,160,12.2
+2015,Mar,Sierra County,Not Adj,Not Prelim,1310,1150,160,12.2
+2015,Apr,Sierra County,Not Adj,Not Prelim,1340,1220,130,9.4
+2015,May,Sierra County,Not Adj,Not Prelim,1400,1280,120,8.6
+2015,Jun,Sierra County,Not Adj,Not Prelim,1410,1300,120,8.1
+2015,Jul,Sierra County,Not Adj,Not Prelim,1370,1260,110,7.9
+2015,Aug,Sierra County,Not Adj,Not Prelim,1360,1260,100,7.2
+2015,Sep,Sierra County,Not Adj,Not Prelim,1400,1310,90,6.3
+2015,Oct,Sierra County,Not Adj,Not Prelim,1390,1300,90,6.3
+2015,Nov,Sierra County,Not Adj,Not Prelim,1320,1220,100,7.2
+2015,Dec,Sierra County,Not Adj,Not Prelim,1340,1230,110,8.3
+2015,Jan,Siskiyou County,Not Adj,Not Prelim,17760,15490,2270,12.8
+2015,Feb,Siskiyou County,Not Adj,Not Prelim,17730,15510,2230,12.6
+2015,Mar,Siskiyou County,Not Adj,Not Prelim,17740,15680,2070,11.6
+2015,Apr,Siskiyou County,Not Adj,Not Prelim,17570,15920,1660,9.4
+2015,May,Siskiyou County,Not Adj,Not Prelim,17950,16420,1530,8.5
+2015,Jun,Siskiyou County,Not Adj,Not Prelim,18380,16830,1550,8.4
+2015,Jul,Siskiyou County,Not Adj,Not Prelim,18120,16600,1520,8.4
+2015,Aug,Siskiyou County,Not Adj,Not Prelim,18330,16930,1410,7.7
+2015,Sep,Siskiyou County,Not Adj,Not Prelim,18090,16790,1300,7.2
+2015,Oct,Siskiyou County,Not Adj,Not Prelim,17990,16650,1340,7.4
+2015,Nov,Siskiyou County,Not Adj,Not Prelim,17530,15990,1540,8.8
+2015,Dec,Siskiyou County,Not Adj,Not Prelim,17400,15590,1810,10.4
+2015,Jan,Solano County,Not Adj,Not Prelim,203300,188800,14400,7.1
+2015,Feb,Solano County,Not Adj,Not Prelim,203900,189900,14000,6.9
+2015,Mar,Solano County,Not Adj,Not Prelim,204300,190600,13700,6.7
+2015,Apr,Solano County,Not Adj,Not Prelim,203600,191100,12500,6.1
+2015,May,Solano County,Not Adj,Not Prelim,204700,192300,12300,6
+2015,Jun,Solano County,Not Adj,Not Prelim,205200,192300,13000,6.3
+2015,Jul,Solano County,Not Adj,Not Prelim,205200,191900,13200,6.5
+2015,Aug,Solano County,Not Adj,Not Prelim,204700,192400,12400,6
+2015,Sep,Solano County,Not Adj,Not Prelim,205000,193600,11400,5.6
+2015,Oct,Solano County,Not Adj,Not Prelim,205700,194100,11600,5.6
+2015,Nov,Solano County,Not Adj,Not Prelim,206600,194900,11700,5.7
+2015,Dec,Solano County,Not Adj,Not Prelim,206200,194800,11400,5.5
+2015,Jan,Sonoma County,Not Adj,Not Prelim,255200,241600,13600,5.3
+2015,Feb,Sonoma County,Not Adj,Not Prelim,256200,243300,12900,5
+2015,Mar,Sonoma County,Not Adj,Not Prelim,256600,244100,12600,4.9
+2015,Apr,Sonoma County,Not Adj,Not Prelim,256600,245300,11300,4.4
+2015,May,Sonoma County,Not Adj,Not Prelim,258900,247700,11100,4.3
+2015,Jun,Sonoma County,Not Adj,Not Prelim,258000,246100,11900,4.6
+2015,Jul,Sonoma County,Not Adj,Not Prelim,259600,247300,12300,4.7
+2015,Aug,Sonoma County,Not Adj,Not Prelim,259100,247800,11400,4.4
+2015,Sep,Sonoma County,Not Adj,Not Prelim,259900,249500,10400,4
+2015,Oct,Sonoma County,Not Adj,Not Prelim,258500,247800,10700,4.2
+2015,Nov,Sonoma County,Not Adj,Not Prelim,256700,245900,10900,4.2
+2015,Dec,Sonoma County,Not Adj,Not Prelim,256600,246000,10500,4.1
+2015,Jan,Stanislaus County,Not Adj,Not Prelim,239900,213100,26700,11.1
+2015,Feb,Stanislaus County,Not Adj,Not Prelim,240400,214000,26400,11
+2015,Mar,Stanislaus County,Not Adj,Not Prelim,241300,215100,26200,10.9
+2015,Apr,Stanislaus County,Not Adj,Not Prelim,240000,215800,24200,10.1
+2015,May,Stanislaus County,Not Adj,Not Prelim,241700,218500,23200,9.6
+2015,Jun,Stanislaus County,Not Adj,Not Prelim,240800,216900,23900,9.9
+2015,Jul,Stanislaus County,Not Adj,Not Prelim,242200,219100,23100,9.5
+2015,Aug,Stanislaus County,Not Adj,Not Prelim,244600,223700,20800,8.5
+2015,Sep,Stanislaus County,Not Adj,Not Prelim,241600,222400,19200,7.9
+2015,Oct,Stanislaus County,Not Adj,Not Prelim,240200,220100,20100,8.4
+2015,Nov,Stanislaus County,Not Adj,Not Prelim,240100,219000,21100,8.8
+2015,Dec,Stanislaus County,Not Adj,Not Prelim,239100,217900,21200,8.9
+2015,Jan,Sutter County,Not Adj,Not Prelim,43600,37800,5800,13.3
+2015,Feb,Sutter County,Not Adj,Not Prelim,44100,38200,6000,13.5
+2015,Mar,Sutter County,Not Adj,Not Prelim,44800,38900,5900,13.1
+2015,Apr,Sutter County,Not Adj,Not Prelim,44600,39400,5200,11.7
+2015,May,Sutter County,Not Adj,Not Prelim,45100,40300,4900,10.8
+2015,Jun,Sutter County,Not Adj,Not Prelim,45300,40500,4800,10.7
+2015,Jul,Sutter County,Not Adj,Not Prelim,46000,41600,4400,9.5
+2015,Aug,Sutter County,Not Adj,Not Prelim,46100,42200,3900,8.5
+2015,Sep,Sutter County,Not Adj,Not Prelim,44600,40900,3700,8.3
+2015,Oct,Sutter County,Not Adj,Not Prelim,44500,40600,3900,8.8
+2015,Nov,Sutter County,Not Adj,Not Prelim,44000,39500,4400,10.1
+2015,Dec,Sutter County,Not Adj,Not Prelim,44000,39200,4800,10.8
+2015,Jan,Tehama County,Not Adj,Not Prelim,24980,22570,2410,9.6
+2015,Feb,Tehama County,Not Adj,Not Prelim,24730,22450,2290,9.2
+2015,Mar,Tehama County,Not Adj,Not Prelim,24790,22560,2220,9
+2015,Apr,Tehama County,Not Adj,Not Prelim,24810,22820,1980,8
+2015,May,Tehama County,Not Adj,Not Prelim,24930,22980,1940,7.8
+2015,Jun,Tehama County,Not Adj,Not Prelim,25220,23170,2040,8.1
+2015,Jul,Tehama County,Not Adj,Not Prelim,24810,22710,2100,8.4
+2015,Aug,Tehama County,Not Adj,Not Prelim,25210,23310,1900,7.5
+2015,Sep,Tehama County,Not Adj,Not Prelim,25710,23980,1730,6.7
+2015,Oct,Tehama County,Not Adj,Not Prelim,25680,23980,1700,6.6
+2015,Nov,Tehama County,Not Adj,Not Prelim,24850,23090,1760,7.1
+2015,Dec,Tehama County,Not Adj,Not Prelim,24550,22720,1820,7.4
+2015,Jan,Trinity County,Not Adj,Not Prelim,4940,4420,520,10.5
+2015,Feb,Trinity County,Not Adj,Not Prelim,4950,4460,490,10
+2015,Mar,Trinity County,Not Adj,Not Prelim,4960,4470,490,9.9
+2015,Apr,Trinity County,Not Adj,Not Prelim,5000,4560,440,8.7
+2015,May,Trinity County,Not Adj,Not Prelim,5220,4830,390,7.4
+2015,Jun,Trinity County,Not Adj,Not Prelim,5380,5000,380,7
+2015,Jul,Trinity County,Not Adj,Not Prelim,5370,4990,380,7.1
+2015,Aug,Trinity County,Not Adj,Not Prelim,5470,5130,340,6.3
+2015,Sep,Trinity County,Not Adj,Not Prelim,5300,4990,310,5.9
+2015,Oct,Trinity County,Not Adj,Not Prelim,5130,4800,320,6.3
+2015,Nov,Trinity County,Not Adj,Not Prelim,5030,4660,370,7.3
+2015,Dec,Trinity County,Not Adj,Not Prelim,4950,4560,390,7.9
+2015,Jan,Tulare County,Not Adj,Not Prelim,202300,174400,28000,13.8
+2015,Feb,Tulare County,Not Adj,Not Prelim,202300,175000,27300,13.5
+2015,Mar,Tulare County,Not Adj,Not Prelim,201200,173700,27500,13.7
+2015,Apr,Tulare County,Not Adj,Not Prelim,205200,181400,23700,11.6
+2015,May,Tulare County,Not Adj,Not Prelim,207100,184700,22400,10.8
+2015,Jun,Tulare County,Not Adj,Not Prelim,204400,181200,23200,11.4
+2015,Jul,Tulare County,Not Adj,Not Prelim,205200,181600,23600,11.5
+2015,Aug,Tulare County,Not Adj,Not Prelim,202200,180500,21700,10.7
+2015,Sep,Tulare County,Not Adj,Not Prelim,200500,180300,20200,10.1
+2015,Oct,Tulare County,Not Adj,Not Prelim,196300,175400,20900,10.6
+2015,Nov,Tulare County,Not Adj,Not Prelim,199700,178000,21700,10.9
+2015,Dec,Tulare County,Not Adj,Not Prelim,199100,175600,23500,11.8
+2015,Jan,Tuolumne County,Not Adj,Not Prelim,21450,19620,1830,8.5
+2015,Feb,Tuolumne County,Not Adj,Not Prelim,21380,19620,1770,8.3
+2015,Mar,Tuolumne County,Not Adj,Not Prelim,21420,19700,1720,8
+2015,Apr,Tuolumne County,Not Adj,Not Prelim,21410,19860,1550,7.2
+2015,May,Tuolumne County,Not Adj,Not Prelim,21760,20270,1480,6.8
+2015,Jun,Tuolumne County,Not Adj,Not Prelim,21730,20200,1530,7
+2015,Jul,Tuolumne County,Not Adj,Not Prelim,21770,20220,1550,7.1
+2015,Aug,Tuolumne County,Not Adj,Not Prelim,21640,20210,1430,6.6
+2015,Sep,Tuolumne County,Not Adj,Not Prelim,21580,20250,1330,6.2
+2015,Oct,Tuolumne County,Not Adj,Not Prelim,21420,20070,1360,6.3
+2015,Nov,Tuolumne County,Not Adj,Not Prelim,21460,20080,1380,6.4
+2015,Dec,Tuolumne County,Not Adj,Not Prelim,21380,19980,1400,6.5
+2015,Jan,Ventura County,Not Adj,Not Prelim,429400,401900,27500,6.4
+2015,Feb,Ventura County,Not Adj,Not Prelim,431200,405400,25700,6
+2015,Mar,Ventura County,Not Adj,Not Prelim,431800,406900,25000,5.8
+2015,Apr,Ventura County,Not Adj,Not Prelim,429100,406400,22700,5.3
+2015,May,Ventura County,Not Adj,Not Prelim,428800,405900,22900,5.3
+2015,Jun,Ventura County,Not Adj,Not Prelim,426200,402000,24200,5.7
+2015,Jul,Ventura County,Not Adj,Not Prelim,423400,397800,25600,6
+2015,Aug,Ventura County,Not Adj,Not Prelim,421000,396100,24900,5.9
+2015,Sep,Ventura County,Not Adj,Not Prelim,422800,399300,23500,5.6
+2015,Oct,Ventura County,Not Adj,Not Prelim,427000,403900,23100,5.4
+2015,Nov,Ventura County,Not Adj,Not Prelim,428100,404800,23300,5.4
+2015,Dec,Ventura County,Not Adj,Not Prelim,428000,405300,22700,5.3
+2015,Jan,Yolo County,Not Adj,Not Prelim,103900,95600,8200,7.9
+2015,Feb,Yolo County,Not Adj,Not Prelim,104000,96100,7900,7.6
+2015,Mar,Yolo County,Not Adj,Not Prelim,104300,96700,7600,7.3
+2015,Apr,Yolo County,Not Adj,Not Prelim,103600,97100,6500,6.3
+2015,May,Yolo County,Not Adj,Not Prelim,103900,97600,6300,6.1
+2015,Jun,Yolo County,Not Adj,Not Prelim,104500,97900,6700,6.4
+2015,Jul,Yolo County,Not Adj,Not Prelim,105000,98300,6700,6.4
+2015,Aug,Yolo County,Not Adj,Not Prelim,104200,97900,6300,6
+2015,Sep,Yolo County,Not Adj,Not Prelim,103500,97700,5700,5.5
+2015,Oct,Yolo County,Not Adj,Not Prelim,104000,97800,6100,5.9
+2015,Nov,Yolo County,Not Adj,Not Prelim,104200,97700,6500,6.2
+2015,Dec,Yolo County,Not Adj,Not Prelim,104800,98200,6600,6.3
+2015,Jan,Yuba County,Not Adj,Not Prelim,27500,24300,3100,11.5
+2015,Feb,Yuba County,Not Adj,Not Prelim,27500,24400,3000,11.1
+2015,Mar,Yuba County,Not Adj,Not Prelim,27700,24800,3000,10.7
+2015,Apr,Yuba County,Not Adj,Not Prelim,27500,24900,2600,9.6
+2015,May,Yuba County,Not Adj,Not Prelim,27800,25200,2500,9.1
+2015,Jun,Yuba County,Not Adj,Not Prelim,27800,25200,2600,9.4
+2015,Jul,Yuba County,Not Adj,Not Prelim,27900,25300,2600,9.2
+2015,Aug,Yuba County,Not Adj,Not Prelim,28100,25800,2300,8.3
+2015,Sep,Yuba County,Not Adj,Not Prelim,27800,25600,2200,7.8
+2015,Oct,Yuba County,Not Adj,Not Prelim,27800,25600,2200,7.9
+2015,Nov,Yuba County,Not Adj,Not Prelim,27700,25300,2400,8.7
+2015,Dec,Yuba County,Not Adj,Not Prelim,27700,25200,2500,9

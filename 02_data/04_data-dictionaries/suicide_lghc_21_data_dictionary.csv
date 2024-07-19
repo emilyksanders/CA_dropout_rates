@@ -1,0 +1,10 @@
+column_name,format,definition
+Indicator,String,LGHC Indicator
+Geography,String,"Data is either state- or county-level. Location is based on residence, not occurrence of event."
+Year,String,"Year in which incident occurred. Due to statistical stability and small cell size concerns, county-level data is in 3-year aggregates."
+Strata,String,General demographic category under which responses have been stratified. 
+Strata Name,String,Individual strata within a demographic category.
+Numerator,Number,Number of incidents.
+Denominator,Number,"Population at risk, taken from California Department of Finance projections."
+Rate,Number,"Number of incidents per 100,000 population at risk."
+Age Adjusted Rate,Number,"For explanation of Age Adjusted Rate, see https://en.wikipedia.org/wiki/Age_adjustment"
