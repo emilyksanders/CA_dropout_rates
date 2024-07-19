@@ -1,7 +1,8 @@
 # **It Takes a Village**
 ### *An exploration of county-level predictors of high school dropout rates in California*
-###### Eli Winton, Emily K. Sanders, and Radha Mohanty
-###### DSB-318, Project 4, Group 4, May 17, 2024
+###### Eli Winton and Emily K. Sanders
+###### with contributions by Radha Mohanty
+###### Original version presented for: DSB-318, Project 4, Group 4, May 17, 2024
 ---
 ###### *A [table of contents](#Table-of-Contents) for the repository is available at the bottom of this README.*
 
