@@ -2,6 +2,8 @@
 import pandas as pd
 import os
 
+os.getcwd()
+
 # Read in data
 absent = pd.read_csv(
   '02_data/eks_new/absenteeism_counts_by_reason_22-23.txt', 
@@ -27,7 +29,7 @@ absent = absent[absent['charter_school__absentee_22-23']=='All']
 # Let's see
 absent.shape
 absent['aggregate_level__absentee_22-23'].value_counts()
-absent['school_name__absentee_22-23'].unique()[:100]
+absent['school_name__absentee_22-23'].unique()
 absent['school_name__absentee_22-23'].value_counts(dropna = False)
 
 # Let's see how many things per thing we have
@@ -38,30 +40,34 @@ for i in list(absent.columns):
     # after dropping to D, all 0s except school name
   print('')
   
-# Why are there still NAs in school name?
-test = absent[absent['school_name__absentee_22-23'].isna()]
+# # Why are there still NAs in school name?
+# test = absent[absent['school_name__absentee_22-23'].isna()]
+# 
+# absent.isna().sum()
+# 
+# for i in list(absent.columns):
+#   print(i)
+#   # print('')
+#   # print('UNIQUE')
+#   # print(f"TOTAL: {absent[i].nunique()}")
+#   # print(absent[i].groupby(absent['excused_absences--count__absentee_22-23'].isna()).nunique())
+#   print('')
+#   print('NAs')
+#   print(f"TOTAL: {absent[i].isna().count()}")
+#   print(absent[i].groupby(absent['excused_absences--count__absentee_22-23'].isna()).count())
+#     # after dropping to D, all 0s except school name
+#   print('')
+#   print('='*15)
+#   print('')
 
-absent.isna().sum()
-
-for i in list(absent.columns):
-  print(i)
-  # print('')
-  # print('UNIQUE')
-  # print(f"TOTAL: {absent[i].nunique()}")
-  # print(absent[i].groupby(absent['excused_absences--count__absentee_22-23'].isna()).nunique())
-  print('')
-  print('NAs')
-  print(f"TOTAL: {absent[i].isna().count()}")
-  print(absent[i].groupby(absent['excused_absences--count__absentee_22-23'].isna()).count())
-    # after dropping to D, all 0s except school name
-  print('')
-  print('='*15)
-  print('')
-
-# a bunch of columns have the exact same 34500 NAs
+# a bunch of columns have the exact same 5291 NAs
 absent = absent[absent['excused_absences--count__absentee_22-23'].notna()]
 absent.shape
 absent.isna().sum() # the only ones left are in school name
+
+# what is going on with those?
+absent_wo_school_name = absent[absent['school_name__absentee_22-23'].isna()]
+absent_w_school_name = absent[absent['school_name__absentee_22-23'].notna()]
 
 # drop columns
 absent.columns
