@@ -61,21 +61,52 @@ for i in list(absent.columns):
 #   print('')
 
 # a bunch of columns have the exact same 5291 NAs
+absent_nas = absent[absent['excused_absences--count__absentee_22-23'].isna()]
+absent_nas.shape
+absent_nas.isna().sum()
+
+# a bunch of columns have the exact same 5291 NAs
+# I don't know what's up with them, but it doesn't matter.
+# NONE of these rows have ANY useful data in them. So drop them.
 absent = absent[absent['excused_absences--count__absentee_22-23'].notna()]
 absent.shape
-absent.isna().sum() # the only ones left are in school name
+absent.isna().sum() 
 
-# what is going on with those?
+# the only NAs left are in school name
+absent['school_name__absentee_22-23'].unique()
+
+# what is going on with them? -- SEE SEPARATE SCRIPT
 absent_wo_school_name = absent[absent['school_name__absentee_22-23'].isna()]
 absent_w_school_name = absent[absent['school_name__absentee_22-23'].notna()]
+
+# it's either "District Office" or NaN.  it doesn't matter.
+
+# why are there more unique district codes than district names?
+
+weird_d_codes = [
+  i for i in (list(absent['district_name__absentee_22-23'].unique())) if
+  (absent.loc[(absent[
+    'district_name__absentee_22-23']==i), 
+    ('district_code__absentee_22-23')]).nunique()>1
+]
+
+for i in weird_d_codes:
+  print(i)
+  print((absent.loc[(absent[
+    'district_name__absentee_22-23']==i), 
+    ('district_code__absentee_22-23')]).nunique())
+
+# because there are duplicate district names in different counties!
+# why are you like this, california!?
+
 
 # drop columns
 absent.columns
 
 drop_cols = ['dass__absentee_22-23', 'charter_school__absentee_22-23',
   'aggregate_level__absentee_22-23', 'school_code__absentee_22-23', 
-  'county_name__absentee_22-23', 'district_name__absentee_22-23', 
-  'school_name__absentee_22-23']
+  'county_name__absentee_22-23', 'school_name__absentee_22-23',
+  'district_name__absentee_22-23'] # beGONE, agent of confusion!
   
 absent.drop(columns = drop_cols, inplace = True)
 absent.shape
@@ -104,41 +135,75 @@ district = 'district_code__absentee_22-23'
 subs = []
 
 for i in cats_list:
-  print(f"absent_{i} = absent.loc[absent[a=='{i}'].index, [district, cats_col]]")
-  subs.append(absent_{i})
+  if i=='TA':
+    print(f"absent_{i} = absent.loc[absent[a=='{i}'].index, :]")
+  else:
+    print(f"absent_{i} = absent.loc[absent[a=='{i}'].index, split_cols]")
+  
+for i in cats_list:
+  print(f"subs.append(absent_{i})")
 
-absent_CAN = absent.loc[absent[a=='CAN'].index, [district, cats_col]]
-absent_CAY = absent.loc[absent[a=='CAY'].index, [district, cats_col]]
-absent_GF = absent.loc[absent[a=='GF'].index, [district, cats_col]]
-absent_GM = absent.loc[absent[a=='GM'].index, [district, cats_col]]
-absent_GR13 = absent.loc[absent[a=='GR13'].index, [district, cats_col]]
-absent_GR46 = absent.loc[absent[a=='GR46'].index, [district, cats_col]]
-absent_GR78 = absent.loc[absent[a=='GR78'].index, [district, cats_col]]
-absent_GR912 = absent.loc[absent[a=='GR912'].index, [district, cats_col]]
-absent_GRK8 = absent.loc[absent[a=='GRK8'].index, [district, cats_col]]
-absent_GRKN = absent.loc[absent[a=='GRKN'].index, [district, cats_col]]
-absent_RA = absent.loc[absent[a=='RA'].index, [district, cats_col]]
-absent_RB = absent.loc[absent[a=='RB'].index, [district, cats_col]]
-absent_RD = absent.loc[absent[a=='RD'].index, [district, cats_col]]
-absent_RF = absent.loc[absent[a=='RF'].index, [district, cats_col]]
-absent_RH = absent.loc[absent[a=='RH'].index, [district, cats_col]]
-absent_RI = absent.loc[absent[a=='RI'].index, [district, cats_col]]
-absent_RP = absent.loc[absent[a=='RP'].index, [district, cats_col]]
-absent_RT = absent.loc[absent[a=='RT'].index, [district, cats_col]]
-absent_RW = absent.loc[absent[a=='RW'].index, [district, cats_col]]
-absent_SD = absent.loc[absent[a=='SD'].index, [district, cats_col]]
-absent_SE = absent.loc[absent[a=='SE'].index, [district, cats_col]]
-absent_SF = absent.loc[absent[a=='SF'].index, [district, cats_col]]
-absent_SH = absent.loc[absent[a=='SH'].index, [district, cats_col]]
-absent_SS = absent.loc[absent[a=='SS'].index, [district, cats_col]]
-absent_TA = absent.loc[absent[a=='TA'].index, [district, cats_col]]
-absent_GX = absent.loc[absent[a=='GX'].index, [district, cats_col]]
-absent_SM = absent.loc[absent[a=='SM'].index, [district, cats_col]]
+absent_CAN = absent.loc[absent[a=='CAN'].index, split_cols]
+absent_CAY = absent.loc[absent[a=='CAY'].index, split_cols]
+absent_GF = absent.loc[absent[a=='GF'].index, split_cols]
+absent_GM = absent.loc[absent[a=='GM'].index, split_cols]
+absent_GR13 = absent.loc[absent[a=='GR13'].index, split_cols]
+absent_GR46 = absent.loc[absent[a=='GR46'].index, split_cols]
+absent_GR78 = absent.loc[absent[a=='GR78'].index, split_cols]
+absent_GR912 = absent.loc[absent[a=='GR912'].index, split_cols]
+absent_GRK8 = absent.loc[absent[a=='GRK8'].index, split_cols]
+absent_GRKN = absent.loc[absent[a=='GRKN'].index, split_cols]
+absent_RA = absent.loc[absent[a=='RA'].index, split_cols]
+absent_RB = absent.loc[absent[a=='RB'].index, split_cols]
+absent_RD = absent.loc[absent[a=='RD'].index, split_cols]
+absent_RF = absent.loc[absent[a=='RF'].index, split_cols]
+absent_RH = absent.loc[absent[a=='RH'].index, split_cols]
+absent_RI = absent.loc[absent[a=='RI'].index, split_cols]
+absent_RP = absent.loc[absent[a=='RP'].index, split_cols]
+absent_RT = absent.loc[absent[a=='RT'].index, split_cols]
+absent_RW = absent.loc[absent[a=='RW'].index, split_cols]
+absent_SD = absent.loc[absent[a=='SD'].index, split_cols]
+absent_SE = absent.loc[absent[a=='SE'].index, split_cols]
+absent_SF = absent.loc[absent[a=='SF'].index, split_cols]
+absent_SH = absent.loc[absent[a=='SH'].index, split_cols]
+absent_SS = absent.loc[absent[a=='SS'].index, split_cols]
+absent_TA = absent.loc[absent[a=='TA'].index, :]
+absent_GX = absent.loc[absent[a=='GX'].index, split_cols]
+absent_SM = absent.loc[absent[a=='SM'].index, split_cols]
+
+
+subs.append(absent_CAN)
+subs.append(absent_CAY)
+subs.append(absent_GF)
+subs.append(absent_GM)
+subs.append(absent_GR13)
+subs.append(absent_GR46)
+subs.append(absent_GR78)
+subs.append(absent_GR912)
+subs.append(absent_GRK8)
+subs.append(absent_GRKN)
+subs.append(absent_RA)
+subs.append(absent_RB)
+subs.append(absent_RD)
+subs.append(absent_RF)
+subs.append(absent_RH)
+subs.append(absent_RI)
+subs.append(absent_RP)
+subs.append(absent_RT)
+subs.append(absent_RW)
+subs.append(absent_SD)
+subs.append(absent_SE)
+subs.append(absent_SF)
+subs.append(absent_SH)
+subs.append(absent_SS)
+subs.append(absent_TA)
+subs.append(absent_GX)
+subs.append(absent_SM)
 
 # make sure we got all the rows
 
-for i, j in list(zip(cat_list, subs)):
-  print("""
+for i, j in list(zip(cats_list, subs)):
+  print(f"""
   {'='*20}
   {i}
   {'-'*20}
@@ -157,70 +222,140 @@ Original is {absent[a==i].shape[0]}); reduced is {j.shape[0]}.
   else:
     print("Help!  The math ain't mathin'!")
 
+# I don't think I need to rename them or drop the reporting category column.
+# I think I can just merge with a suffix and then use a list comp to drop.
 
+# create a df with "placeholder" columns to force pd.merge to put
+# a suffix on every single merged-in column 
+# (it was previously skipping the first ones, because they were unique)
+absent_remade = pd.DataFrame(
+  columns = [
+    'district_code__absentee_22-23',
+    'academic_year__absentee_22-23', 'county_code__absentee_22-23',
+    'reporting_category__absentee_22-23',
+    'eligible_cumulative_enrollment__absentee_22-23',
+    'count_of_students_with_one_or_more_absences__absentee_22-23',
+    'average_days_absent__absentee_22-23',
+    'total_days_absent__absentee_22-23',
+    'excused_absences--percent__absentee_22-23',
+    'unexcused_absences--percent__absentee_22-23',
+    'out-of-school_suspension_absences--percent__absentee_22-23',
+    'incomplete_independent_study_absences--percent__absentee_22-23',
+    'excused_absences--count__absentee_22-23',
+    'unexcused_absences--count__absentee_22-23',
+    'out-of-school_suspension_absences--count__absentee_22-23',
+    'incomplete_independent_study_absences--count__absentee_22-23'])
 
-# rename columns
-for i in cats_list:
-  print(f"absent_{i}.rename(columns = &cats_col: '{i}'&&, inplace = True)")
+# put in the district codes, to match on
+absent_remade['district_code__absentee_22-23'] = list(absent['district_code__absentee_22-23'].unique())
 
-print('''
-absent_CAN.rename(columns = &cats_col: 'CAN'&&, inplace = True)
-absent_CAY.rename(columns = &cats_col: 'CAY'&&, inplace = True)
-absent_GF.rename(columns = &cats_col: 'GF'&&, inplace = True)
-absent_GM.rename(columns = &'{cats_col}': 'GM'&&, inplace = True)
-absent_GR13.rename(columns = &'{cats_col}': 'GR13'&&, inplace = True)
-absent_GR46.rename(columns = &'{cats_col}': 'GR46'&&, inplace = True)
-absent_GR78.rename(columns = &'{cats_col}': 'GR78'&&, inplace = True)
-absent_GR912.rename(columns = &'{cats_col}': 'GR912'&&, inplace = True)
-absent_GRK8.rename(columns = &'{cats_col}': 'GRK8'&&, inplace = True)
-absent_GRKN.rename(columns = &'{cats_col}': 'GRKN'&&, inplace = True)
-absent_RA.rename(columns = &'{cats_col}': 'RA'&&, inplace = True)
-absent_RB.rename(columns = &'{cats_col}': 'RB'&&, inplace = True)
-absent_RD.rename(columns = &'{cats_col}': 'RD'&&, inplace = True)
-absent_RF.rename(columns = &'{cats_col}': 'RF'&&, inplace = True)
-absent_RH.rename(columns = &'{cats_col}': 'RH'&&, inplace = True)
-absent_RI.rename(columns = &'{cats_col}': 'RI'&&, inplace = True)
-absent_RP.rename(columns = &'{cats_col}': 'RP'&&, inplace = True)
-absent_RT.rename(columns = &'{cats_col}': 'RT'&&, inplace = True)
-absent_RW.rename(columns = &'{cats_col}': 'RW'&&, inplace = True)
-absent_SD.rename(columns = &'{cats_col}': 'SD'&&, inplace = True)
-absent_SE.rename(columns = &'{cats_col}': 'SE'&&, inplace = True)
-absent_SF.rename(columns = &'{cats_col}': 'SF'&&, inplace = True)
-absent_SH.rename(columns = &'{cats_col}': 'SH'&&, inplace = True)
-absent_SS.rename(columns = &'{cats_col}': 'SS'&&, inplace = True)
-absent_TA.rename(columns = &'{cats_col}': 'TA'&&, inplace = True)
-absent_GX.rename(columns = &'{cats_col}': 'GX'&&, inplace = True)
-absent_SM.rename(columns = &'{cats_col}': 'SM'&&, inplace = True)
-'''.replace('&&', '}').replace('&', '{'))
+# do some checks
+absent_remade.shape # (1010, 1)
+absent_remade.isna().sum()
 
-absent_CAN.rename(columns = {'reporting_category__absentee_22-23': 'CAN'}, inplace = True)
-absent_CAY.rename(columns = {'reporting_category__absentee_22-23': 'CAY'}, inplace = True)
-absent_GF.rename(columns = {'reporting_category__absentee_22-23': 'GF'}, inplace = True)
-absent_GM.rename(columns = {'reporting_category__absentee_22-23': 'GM'}, inplace = True)
-absent_GR13.rename(columns = {'reporting_category__absentee_22-23': 'GR13'}, inplace = True)
-absent_GR46.rename(columns = {'reporting_category__absentee_22-23': 'GR46'}, inplace = True)
-absent_GR78.rename(columns = {'reporting_category__absentee_22-23': 'GR78'}, inplace = True)
-absent_GR912.rename(columns = {'reporting_category__absentee_22-23': 'GR912'}, inplace = True)
-absent_GRK8.rename(columns = {'reporting_category__absentee_22-23': 'GRK8'}, inplace = True)
-absent_GRKN.rename(columns = {'reporting_category__absentee_22-23': 'GRKN'}, inplace = True)
-absent_RA.rename(columns = {'reporting_category__absentee_22-23': 'RA'}, inplace = True)
-absent_RB.rename(columns = {'reporting_category__absentee_22-23': 'RB'}, inplace = True)
-absent_RD.rename(columns = {'reporting_category__absentee_22-23': 'RD'}, inplace = True)
-absent_RF.rename(columns = {'reporting_category__absentee_22-23': 'RF'}, inplace = True)
-absent_RH.rename(columns = {'reporting_category__absentee_22-23': 'RH'}, inplace = True)
-absent_RI.rename(columns = {'reporting_category__absentee_22-23': 'RI'}, inplace = True)
-absent_RP.rename(columns = {'reporting_category__absentee_22-23': 'RP'}, inplace = True)
-absent_RT.rename(columns = {'reporting_category__absentee_22-23': 'RT'}, inplace = True)
-absent_RW.rename(columns = {'reporting_category__absentee_22-23': 'RW'}, inplace = True)
-absent_SD.rename(columns = {'reporting_category__absentee_22-23': 'SD'}, inplace = True)
-absent_SE.rename(columns = {'reporting_category__absentee_22-23': 'SE'}, inplace = True)
-absent_SF.rename(columns = {'reporting_category__absentee_22-23': 'SF'}, inplace = True)
-absent_SH.rename(columns = {'reporting_category__absentee_22-23': 'SH'}, inplace = True)
-absent_SS.rename(columns = {'reporting_category__absentee_22-23': 'SS'}, inplace = True)
-absent_TA.rename(columns = {'reporting_category__absentee_22-23': 'TA'}, inplace = True)
-absent_GX.rename(columns = {'reporting_category__absentee_22-23': 'GX'}, inplace = True)
-absent_SM.rename(columns = {'reporting_category__absentee_22-23': 'SM'}, inplace = True)
+# these names are too long
+d = 'district_code__absentee_22-23'
 
+# for every sub-df, generate suffixes and merge it in
+for i, j in list(zip(subs, cats_list)):
+  # print(f'{j}: {i[cats_col].unique()}')
+  k = f'_{j}'
+  absent_remade = absent_remade.merge(
+    i, on = d, how = 'left', suffixes=(None, k))
+absent_remade.shape # (1010, a lot)
+
+blank_col_names = ['academic_year__absentee_22-23', 'county_code__absentee_22-23',
+    'reporting_category__absentee_22-23',
+    'eligible_cumulative_enrollment__absentee_22-23',
+    'count_of_students_with_one_or_more_absences__absentee_22-23',
+    'average_days_absent__absentee_22-23',
+    'total_days_absent__absentee_22-23',
+    'excused_absences--percent__absentee_22-23',
+    'unexcused_absences--percent__absentee_22-23',
+    'out-of-school_suspension_absences--percent__absentee_22-23',
+    'incomplete_independent_study_absences--percent__absentee_22-23',
+    'excused_absences--count__absentee_22-23',
+    'unexcused_absences--count__absentee_22-23',
+    'out-of-school_suspension_absences--count__absentee_22-23',
+    'incomplete_independent_study_absences--count__absentee_22-23']
+
+absent_remade.drop(columns = blank_col_names).shape
+absent_remade.drop(columns = blank_col_names, inplace = True)
+absent_remade.shape
+
+# get rid of the reporting category columns
+rc_cols = [a for a in absent_remade.columns if a.split('__')[0]=='reporting_category']
+absent_remade.drop(columns = rc_cols).shape
+absent_remade.drop(columns = rc_cols, inplace = True)
+absent_remade.shape
+
+# not bad!!
+# I'd say that should do it!
+os.getcwd()
+# os.mkdir('02_data/eks_new/cleaned')
+absent_remade.to_csv('02_data/eks_new/cleaned/absenteeism-by-reason_22-23')
+
+# # rename columns
+# for i in cats_list:
+#   print(f"absent_{i}.rename(columns = &'{cats_col}': '{i}__absentee_22-23'&&, inplace = True)")
+# 
+# print('''
+# absent_CAN.rename(columns = &'reporting_category__absentee_22-23': 'CAN__absentee_22-23'&&, inplace = True)
+# absent_CAY.rename(columns = &'reporting_category__absentee_22-23': 'CAY__absentee_22-23'&&, inplace = True)
+# absent_GF.rename(columns = &'reporting_category__absentee_22-23': 'GF__absentee_22-23'&&, inplace = True)
+# absent_GM.rename(columns = &'reporting_category__absentee_22-23': 'GM__absentee_22-23'&&, inplace = True)
+# absent_GR13.rename(columns = &'reporting_category__absentee_22-23': 'GR13__absentee_22-23'&&, inplace = True)
+# absent_GR46.rename(columns = &'reporting_category__absentee_22-23': 'GR46__absentee_22-23'&&, inplace = True)
+# absent_GR78.rename(columns = &'reporting_category__absentee_22-23': 'GR78__absentee_22-23'&&, inplace = True)
+# absent_GR912.rename(columns = &'reporting_category__absentee_22-23': 'GR912__absentee_22-23'&&, inplace = True)
+# absent_GRK8.rename(columns = &'reporting_category__absentee_22-23': 'GRK8__absentee_22-23'&&, inplace = True)
+# absent_GRKN.rename(columns = &'reporting_category__absentee_22-23': 'GRKN__absentee_22-23'&&, inplace = True)
+# absent_RA.rename(columns = &'reporting_category__absentee_22-23': 'RA__absentee_22-23'&&, inplace = True)
+# absent_RB.rename(columns = &'reporting_category__absentee_22-23': 'RB__absentee_22-23'&&, inplace = True)
+# absent_RD.rename(columns = &'reporting_category__absentee_22-23': 'RD__absentee_22-23'&&, inplace = True)
+# absent_RF.rename(columns = &'reporting_category__absentee_22-23': 'RF__absentee_22-23'&&, inplace = True)
+# absent_RH.rename(columns = &'reporting_category__absentee_22-23': 'RH__absentee_22-23'&&, inplace = True)
+# absent_RI.rename(columns = &'reporting_category__absentee_22-23': 'RI__absentee_22-23'&&, inplace = True)
+# absent_RP.rename(columns = &'reporting_category__absentee_22-23': 'RP__absentee_22-23'&&, inplace = True)
+# absent_RT.rename(columns = &'reporting_category__absentee_22-23': 'RT__absentee_22-23'&&, inplace = True)
+# absent_RW.rename(columns = &'reporting_category__absentee_22-23': 'RW__absentee_22-23'&&, inplace = True)
+# absent_SD.rename(columns = &'reporting_category__absentee_22-23': 'SD__absentee_22-23'&&, inplace = True)
+# absent_SE.rename(columns = &'reporting_category__absentee_22-23': 'SE__absentee_22-23'&&, inplace = True)
+# absent_SF.rename(columns = &'reporting_category__absentee_22-23': 'SF__absentee_22-23'&&, inplace = True)
+# absent_SH.rename(columns = &'reporting_category__absentee_22-23': 'SH__absentee_22-23'&&, inplace = True)
+# absent_SS.rename(columns = &'reporting_category__absentee_22-23': 'SS__absentee_22-23'&&, inplace = True)
+# absent_TA.rename(columns = &'reporting_category__absentee_22-23': 'TA__absentee_22-23'&&, inplace = True)
+# absent_GX.rename(columns = &'reporting_category__absentee_22-23': 'GX__absentee_22-23'&&, inplace = True)
+# absent_SM.rename(columns = &'reporting_category__absentee_22-23': 'SM__absentee_22-23'&&, inplace = True)
+# '''.replace('&&', '}').replace('&', '{'))
+# 
+# absent_CAN.rename(columns = {'reporting_category__absentee_22-23': 'CAN__absentee_22-23'}, inplace = True)
+# absent_CAY.rename(columns = {'reporting_category__absentee_22-23': 'CAY__absentee_22-23'}, inplace = True)
+# absent_GF.rename(columns = {'reporting_category__absentee_22-23': 'GF__absentee_22-23'}, inplace = True)
+# absent_GM.rename(columns = {'reporting_category__absentee_22-23': 'GM__absentee_22-23'}, inplace = True)
+# absent_GR13.rename(columns = {'reporting_category__absentee_22-23': 'GR13__absentee_22-23'}, inplace = True)
+# absent_GR46.rename(columns = {'reporting_category__absentee_22-23': 'GR46__absentee_22-23'}, inplace = True)
+# absent_GR78.rename(columns = {'reporting_category__absentee_22-23': 'GR78__absentee_22-23'}, inplace = True)
+# absent_GR912.rename(columns = {'reporting_category__absentee_22-23': 'GR912__absentee_22-23'}, inplace = True)
+# absent_GRK8.rename(columns = {'reporting_category__absentee_22-23': 'GRK8__absentee_22-23'}, inplace = True)
+# absent_GRKN.rename(columns = {'reporting_category__absentee_22-23': 'GRKN__absentee_22-23'}, inplace = True)
+# absent_RA.rename(columns = {'reporting_category__absentee_22-23': 'RA__absentee_22-23'}, inplace = True)
+# absent_RB.rename(columns = {'reporting_category__absentee_22-23': 'RB__absentee_22-23'}, inplace = True)
+# absent_RD.rename(columns = {'reporting_category__absentee_22-23': 'RD__absentee_22-23'}, inplace = True)
+# absent_RF.rename(columns = {'reporting_category__absentee_22-23': 'RF__absentee_22-23'}, inplace = True)
+# absent_RH.rename(columns = {'reporting_category__absentee_22-23': 'RH__absentee_22-23'}, inplace = True)
+# absent_RI.rename(columns = {'reporting_category__absentee_22-23': 'RI__absentee_22-23'}, inplace = True)
+# absent_RP.rename(columns = {'reporting_category__absentee_22-23': 'RP__absentee_22-23'}, inplace = True)
+# absent_RT.rename(columns = {'reporting_category__absentee_22-23': 'RT__absentee_22-23'}, inplace = True)
+# absent_RW.rename(columns = {'reporting_category__absentee_22-23': 'RW__absentee_22-23'}, inplace = True)
+# absent_SD.rename(columns = {'reporting_category__absentee_22-23': 'SD__absentee_22-23'}, inplace = True)
+# absent_SE.rename(columns = {'reporting_category__absentee_22-23': 'SE__absentee_22-23'}, inplace = True)
+# absent_SF.rename(columns = {'reporting_category__absentee_22-23': 'SF__absentee_22-23'}, inplace = True)
+# absent_SH.rename(columns = {'reporting_category__absentee_22-23': 'SH__absentee_22-23'}, inplace = True)
+# absent_SS.rename(columns = {'reporting_category__absentee_22-23': 'SS__absentee_22-23'}, inplace = True)
+# absent_TA.rename(columns = {'reporting_category__absentee_22-23': 'TA__absentee_22-23'}, inplace = True)
+# absent_GX.rename(columns = {'reporting_category__absentee_22-23': 'GX__absentee_22-23'}, inplace = True)
+# absent_SM.rename(columns = {'reporting_category__absentee_22-23': 'SM__absentee_22-23'}, inplace = True)
 
 
 
