@@ -6,7 +6,7 @@ os.getcwd()
 
 # Read in data
 absent = pd.read_csv(
-  '02_data/eks_new/absenteeism_counts_by_reason_22-23.txt', 
+  '../02_data/eks_new/absenteeism_counts_by_reason_22-23.txt', 
   sep='\t', na_values = '*', encoding_errors='replace')
 absent.shape
 
