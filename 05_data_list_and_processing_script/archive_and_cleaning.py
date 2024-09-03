@@ -139,23 +139,22 @@ for url in [pull_urls[1]]:
   print('='*15)
   print(name)
 ###  # Load it - let's see what we've got for seps
-  try: 
-    df = pd.read_csv(url, low_memory = False, 
-      encoding_errors='replace', sep = '\t')
-    print('tab')
-  except:
+  failed_attempts = 0
+  seps = ['\t', ',', ';']
+  for s in seps:
     try: 
       df = pd.read_csv(url, low_memory = False, 
-        encoding_errors='replace', sep = ',')
-      print('comma')
+        encoding_errors='replace', sep = s)
+      if not df.isna().all().all():
+        print(s)
+        break
     except:
-      try: 
-        df = pd.read_csv(url, low_memory = False, 
-          encoding_errors='replace', sep = ';')
-        print('semi-colon')
-      except: 
-        print('failed to load')
-        continue
+      failed_attempts+=1
+      continue
+  
+ if failed_attempts==len(seps):
+   print('none of the seps worked.')
+   continue
 ###  # Save and show some information
   orig_col_names[name] = list(df.columns)
   print('')
@@ -167,6 +166,11 @@ for url in [pull_urls[1]]:
   df.columns = [
     f"{x.lower().replace(' (', '--').replace(' ', '_').replace(')', '')}__df{df_id}" 
     for x in df.columns]
+    
+    #### TAKE THE SUFFIX OFF OF THE ONES WE'RE MERGING ON ####
+    # colname.split('__')[0]
+    
+    
 ###  # Print all column names
   print(df.columns, flush = True)
 ###  # Any chance this could be easy?
@@ -266,3 +270,20 @@ for url in [pull_urls[1]]:
 #     # proceed with that info
 #     if (agg in list(df.columns)):
 
+  # try: 
+  #   df = pd.read_csv(url, low_memory = False, 
+  #     encoding_errors='replace', sep = '\t')
+  #   print('tab')
+  # except:
+  #   try: 
+  #     df = pd.read_csv(url, low_memory = False, 
+  #       encoding_errors='replace', sep = ',')
+  #     print('comma')
+  #   except:
+  #     try: 
+  #       df = pd.read_csv(url, low_memory = False, 
+  #         encoding_errors='replace', sep = ';')
+  #       print('semi-colon')
+  #     except: 
+  #       print('failed to load')
+  #       continue
