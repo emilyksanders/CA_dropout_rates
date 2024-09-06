@@ -4,12 +4,8 @@
 # Secret hidden folder
 *ignore*/
 
-# R Studio
-*.R
-*.Rhistory
-
-# Python Text Scripts
-*.py
+# Not sure why this isn't in the template
+*.Rproj
 
 ## Stuff that came with the Python template from GitHub ##
 ## Thank you, GitHub! ##
