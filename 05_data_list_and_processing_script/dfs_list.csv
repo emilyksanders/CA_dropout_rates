@@ -1,7 +1,8 @@
-original_url,archive_url,cleaned,id
-https://www3.cde.ca.gov/demo-downloads/attendance/chronicabsenteeism23.txt,,,
-https://www3.cde.ca.gov/demo-downloads/attendance/chronicabsenteeism22-v3.txt,,,
-https://www3.cde.ca.gov/demo-downloads/attendance/chronicabsenteeism21.txt,,,
-https://www3.cde.ca.gov/demo-downloads/attendance/chronicabsenteeism19.txt,,,
-https://www3.cde.ca.gov/demo-downloads/attendance/chronicabsenteeism18.txt,,,
-https://www3.cde.ca.gov/demo-downloads/attendance/chronicabsenteeism17.txt,,,
+original_url,archive_url,cleaned,id,source_var
+https://www3.cde.ca.gov/demo-downloads/attendance/chronicabsenteeism23.txt,,,,chronicabsenteeism
+https://www3.cde.ca.gov/demo-downloads/attendance/chronicabsenteeism22-v3.txt,,,,chronicabsenteeism
+https://www3.cde.ca.gov/demo-downloads/attendance/chronicabsenteeism21.txt,,,,chronicabsenteeism
+https://www3.cde.ca.gov/demo-downloads/attendance/chronicabsenteeism19.txt,,,,chronicabsenteeism
+https://www3.cde.ca.gov/demo-downloads/attendance/chronicabsenteeism18.txt,,,,chronicabsenteeism
+https://www3.cde.ca.gov/demo-downloads/attendance/chronicabsenteeism17.txt,,,,chronicabsenteeism
+,,,test,test

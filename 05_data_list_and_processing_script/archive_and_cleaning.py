@@ -29,8 +29,11 @@ def get_dfs_wd():
     
     wd_check = input(wd_prompt)
     
-    if wd_check != "Yes":
+    if wd_check.lower() != "yes":
       os.chdir(wd_check)
+    elif wd_check.lower() == "yes":
+      return 'Working directory set.'
+    
 
 get_dfs_wd()
 
@@ -45,19 +48,91 @@ user_agent = user_agent.lower()
 dfs = pd.read_csv('dfs_list.csv')
 dfs.shape
 
-### Assign ID numbers ###
+### Define start_num ###
 if dfs['id'].notna().sum()==0:
   start_num = 1
 else:
   start_num = max(dfs['id'])+1
 
-# define the condition (no id number)
-cond = dfs['id'].isna()
+### Define categories (e.g., group DFs) ###
+dfs['source_var'] = [
+  re.match(r'^([A-Za-z]+)', u.split('/')[-1].split('.')[0])[0] 
+  for u in dfs['original_url']]
+  
+### Define ID numbers ###
+source_vars = list(dfs['source_var'].unique())
+
+# seed a dictionary
+var_dict = {'1': 'chronicabsenteeism'}
+
+# find which ones need an ID
+for var in source_vars:
+  if var in var_dict.values():
+    continue
+  else:
+    # put it in the dictionary
+    var_dict[str(start_num)] = var
+    start_num += 1
+
+# get a backwards copy too
+var_dict_rev = {v:k for k, v in var_dict.items()}
+
+
 
 # assign the numbers
+for var in source_vars:
+  sub_df = dfs[dfs['source_var']==var]
+  # if NONE of them are NA (isna = False = 0 -> sum(0)=0), AND all the same
+  if ((sub_df['id'].isna().sum()==0) and (len(list(sub_df['id'].unique()))==1)):
+    continue
+  elif ((sub_df['id'].isna().sum()==0) and (len(list(sub_df['id'].unique()))>1)):
+    print(f'Multiple IDs for source_var {var}.')
+    break
+  elif sub_df['id'].notna().sum()==0: # if NOBODY is populated; ALL are NA
+    rows = dfs[dfs['source_var']==var].index
+    dfs.loc[rows, 'id'] = int(var_dict_rev[var])
+  elif (
+    (sub_df['id'].isna().sum()>0) and # not all NA, some are populated
+    (len(list(sub_df['id'].unique()))>2)
+    ): # but we have a value, an NA, and a mystery entry
+          print(f'Multiple non-NA IDs for source_var {var}.')
+          break
+  elif (
+    (sub_df['id'].isna().sum()>0) and # not all NA, some are populated
+    (len(list(sub_df['id'].unique()))==2)
+    ): # we have a value, an NA, and nothing else
+      
+      # FINISH THIS LATER
+      # FILL OUT THOSE VALUES.
+
+
+  
+  sub_df['id'].isna().all():
+
+
+
 for i in dfs.loc[cond, 'id'].index:
   dfs.loc[i, 'id'] = start_num
   start_num += 1
+
+    
+    # define the conditions
+    # define condition 1 (no id number)
+    cond1 = dfs[dfs['id'].isna()].index
+    # define condition 2 (correct source_var)
+    cond2 = dfs[dfs['source_var']==var].index
+    # define the intersection (both conds = True)
+    cond = list(set(cond1).intersection(cond2))
+    # put it in order, JIC
+    cond.sort()
+    
+    
+
+
+
+
+
+
 
 ### Archive them with the Wayback Machine ###
 

@@ -1,0 +1,58 @@
+county,gini_coefficient,suppressed,
+Alameda  ,0.4649,0,
+Amador  ,,1,x
+Butte  ,0.4868,0,
+Calaveras  ,,1,x
+Colusa  ,,1,x
+Contra Costa  ,0.47,0,
+Del Norte  ,,1,x
+El Dorado  ,0.4588,0,
+Fresno  ,0.4801,0,
+Glenn  ,,1,x
+Humboldt  ,0.4682,0,
+Imperial  ,0.4719,0,
+Inyo  ,0.4117,0,x
+Kern  ,0.462,0,
+Kings  ,0.4391,0,
+Lake  ,0.4691,0,x
+Lassen  ,0.4312,0,x
+Los Angeles  ,0.5029,0,
+Madera  ,0.4503,0,
+Marin  ,0.5234,0,
+Mariposa  ,,1,x
+Mendocino  ,,1,x
+Merced  ,0.4653,0,
+Mono  ,,1,x
+Monterey  ,0.4595,0,x
+Napa  ,0.4734,0,
+Nevada  ,0.4639,0,x
+Orange  ,0.4701,0,
+Placer  ,0.4472,0,
+Plumas  ,,1,x
+Riverside  ,0.4515,0,
+Sacramento  ,0.4605,0,
+San Benito  ,0.4007,0,x
+San Bernardino  ,0.4426,0,
+San Diego  ,0.4666,0,
+San Francisco  ,0.5148,0,
+San Joaquin  ,0.455,0,
+San Luis Obispo  ,0.4518,0,
+San Mateo  ,0.484,0,
+Santa Barbara  ,0.4826,0,
+Santa Clara  ,0.4639,0,
+Santa Cruz  ,0.4784,0,
+Shasta  ,0.4634,0,
+Siskiyou  ,0.4506,0,x
+Solano  ,0.4267,0,
+Sonoma  ,0.4584,0,
+Stanislaus  ,0.4493,0,
+Sutter  ,0.4488,0,x
+Tehama  ,0.4513,0,x
+Trinity  ,,1,x
+Tulare  ,0.4682,0,
+Tuolumne  ,,1,x
+Ventura  ,0.4478,0,
+Yolo  ,0.4905,0,
+Yuba  ,0.4269,0,x
+modoc,,,x
+sierra,,,x
