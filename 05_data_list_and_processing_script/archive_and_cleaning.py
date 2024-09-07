@@ -55,6 +55,8 @@ else:
   start_num = max(dfs['id'])+1
 
 ### Define categories (e.g., group DFs) ###
+
+# if this column is already populated for the row, don't do it
 dfs['source_var'] = [
   re.match(r'^([A-Za-z]+)', u.split('/')[-1].split('.')[0])[0] 
   for u in dfs['original_url']]
