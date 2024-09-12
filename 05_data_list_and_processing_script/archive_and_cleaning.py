@@ -112,46 +112,53 @@ dfs = assign_ids(dfs, source_vars, var_dict_rev)
 
 ### Archive them with the Wayback Machine ###
 
-# define the condition (no archival url)
-cond = dfs['archive_url'].isna()
+def archive(dfs):
 
-for i in dfs[cond].index[1:]:
-  # signs of life
-  print(url)
-  # extra security
-  s = str(dfs.loc[i, 'archive_url'])
-  if (s==s.replace(' ', '') and re.match(r'https://web.archive.org/web', s)):
-    continue
-  # now here we go
-  else:
-    # define the URL to save
-    url = dfs.loc[i, 'original_url']
-
-    # create the save object
-    save_api = WaybackMachineSaveAPI(url, user_agent)
-    
-    # hedge our bets
-    try:
-      print('trying to save')
-      # save it, and gather the output url
-      saved_url = save_api.save()
-      # put that url in the df
-      dfs.loc[i, 'archive_url'] = saved_url
-      # collect the timestamp data
-      t = save_api.timestamp()
-      # put the archive date in the df
-      dfs.loc[i, 'archive_date'] = t.strftime('%Y-%M-%d')
-      # put the archive time in the df
-      dfs.loc[i, 'archive_time_GMT'] = t.strftime('%I:%M%p')
-    except Exception as e:
-      print(e)
+  # define the condition (no archival url)
+  cond = dfs['archive_url'].isna()
+  
+  for i in dfs[cond].index: #[1:]:
+    # extra security
+    s = str(dfs.loc[i, 'archive_url'])
+    if ((s==s.replace(' ', '')) and (re.match(r'https://web.archive.org/web', s) is not None)):
       continue
-    
-    print('')
-    
-    # be polite to the server
-    time.sleep(2)
+    # now here we go
+    else:
+      # define the URL to save
+      url = dfs.loc[i, 'original_url']
+      # signs of life
+      print(url)
+  
+      # create the save object
+      save_api = WaybackMachineSaveAPI(url, user_agent)
+      
+      # hedge our bets
+      try:
+        print('trying to save')
+        # save it, and gather the output url
+        saved_url = save_api.save()
+        # put that url in the df
+        dfs.loc[i, 'archive_url'] = saved_url
+        # collect the timestamp data
+        t = save_api.timestamp()
+        # put the archive date in the df
+        dfs.loc[i, 'archive_date'] = t.strftime('%Y-%m-%d')
+        # put the archive time in the df
+        dfs.loc[i, 'archive_time_GMT'] = t.strftime('%H:%M')
+        # record who did it
+        dfs.loc[i, 'user_agent'] = user_agent
+      except Exception as e:
+        print(e)
+        continue
+      
+      print('')
+      
+      # be polite to the server
+      time.sleep(2)
+  
+  return dfs
 
+test_dfs = archive(dfs)
 
 ### That ^ does not quite work. ###
 ### I'll come back to it later. ###
