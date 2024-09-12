@@ -77,61 +77,37 @@ for var in source_vars:
 # get a backwards copy too
 var_dict_rev = {v:k for k, v in var_dict.items()}
 
-
-
 # assign the numbers
-for var in source_vars:
-  sub_df = dfs[dfs['source_var']==var]
-  # if NONE of them are NA (isna = False = 0 -> sum(0)=0), AND all the same
-  if ((sub_df['id'].isna().sum()==0) and (len(list(sub_df['id'].unique()))==1)):
-    continue
-  elif ((sub_df['id'].isna().sum()==0) and (len(list(sub_df['id'].unique()))>1)):
-    print(f'Multiple IDs for source_var {var}.')
-    break
-  elif sub_df['id'].notna().sum()==0: # if NOBODY is populated; ALL are NA
-    rows = dfs[dfs['source_var']==var].index
-    dfs.loc[rows, 'id'] = int(var_dict_rev[var])
-  elif (
-    (sub_df['id'].isna().sum()>0) and # not all NA, some are populated
-    (len(list(sub_df['id'].unique()))>2)
-    ): # but we have a value, an NA, and a mystery entry
-          print(f'Multiple non-NA IDs for source_var {var}.')
-          break
-  elif (
-    (sub_df['id'].isna().sum()>0) and # not all NA, some are populated
-    (len(list(sub_df['id'].unique()))==2)
-    ): # we have a value, an NA, and nothing else
-      
-      # FINISH THIS LATER
-      # FILL OUT THOSE VALUES.
+def assign_ids(dfs, source_vars, var_dict_rev):
+  ''' Assign ID numbers to the source variables in dfs.
+  dfs = the dataframe of data info
+  source_vars = the list of variables that need/have IDs
+  var_dict_rev = the reversed dictionarty where the variables  
+                 are the keys and the numbers are the values
+  '''
+  for var in source_vars:
+    sub_df = dfs[dfs['source_var']==var]
+    # if NONE of them are NA (isna = False = 0 -> sum(0)=0), AND all the same
+    if ((sub_df['id'].isna().sum()==0) and (len(list(sub_df['id'].unique()))==1)):
+      continue
+    elif ((sub_df['id'].isna().sum()==0) and (len(list(sub_df['id'].unique()))>1)):
+      print(f'Multiple IDs for source_var {var}.')
+      break
+    elif sub_df['id'].notna().sum()==0: # if NOBODY is populated; ALL are NA
+      rows = dfs[dfs['source_var']==var].index
+      dfs.loc[rows, 'id'] = int(var_dict_rev[var])
+    elif ((sub_df['id'].isna().sum()>0) and (len(list(sub_df['id'].unique()))>2)): # not all NA, some are populated but we have a value, an NA, and a mystery entry
+      print(f'Multiple non-NA IDs for source_var {var}.')
+      break
+    elif ((sub_df['id'].isna().sum()>0) and (len(list(sub_df['id'].unique()))==2)): # not all NA, some are populated; we have a value, an NA, and nothing else
+        rows = dfs[dfs['source_var']==var].index
+        dfs.loc[rows, 'id'] = int(var_dict_rev[var])
+    else:
+      print(f'We got to else on {var}; something is broken.')
+      break
+  return dfs
 
-
-  
-  sub_df['id'].isna().all():
-
-
-
-for i in dfs.loc[cond, 'id'].index:
-  dfs.loc[i, 'id'] = start_num
-  start_num += 1
-
-    
-    # define the conditions
-    # define condition 1 (no id number)
-    cond1 = dfs[dfs['id'].isna()].index
-    # define condition 2 (correct source_var)
-    cond2 = dfs[dfs['source_var']==var].index
-    # define the intersection (both conds = True)
-    cond = list(set(cond1).intersection(cond2))
-    # put it in order, JIC
-    cond.sort()
-    
-    
-
-
-
-
-
+dfs = assign_ids(dfs, source_vars, var_dict_rev)
 
 
 ### Archive them with the Wayback Machine ###
@@ -362,3 +338,20 @@ for url in [pull_urls[1]]:
   #     except: 
   #       print('failed to load')
   #       continue
+  
+  
+# assigning ID scraps
+# for i in dfs.loc[cond, 'id'].index:
+#   dfs.loc[i, 'id'] = start_num
+#   start_num += 1
+# 
+#     
+#     # define the conditions
+#     # define condition 1 (no id number)
+#     cond1 = dfs[dfs['id'].isna()].index
+#     # define condition 2 (correct source_var)
+#     cond2 = dfs[dfs['source_var']==var].index
+#     # define the intersection (both conds = True)
+#     cond = list(set(cond1).intersection(cond2))
+#     # put it in order, JIC
+#     cond.sort()

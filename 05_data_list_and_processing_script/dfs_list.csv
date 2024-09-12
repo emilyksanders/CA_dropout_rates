@@ -1,8 +1,7 @@
-original_url,archive_url,cleaned,id,source_var
-https://www3.cde.ca.gov/demo-downloads/attendance/chronicabsenteeism23.txt,,,,chronicabsenteeism
-https://www3.cde.ca.gov/demo-downloads/attendance/chronicabsenteeism22-v3.txt,,,,chronicabsenteeism
-https://www3.cde.ca.gov/demo-downloads/attendance/chronicabsenteeism21.txt,,,,chronicabsenteeism
-https://www3.cde.ca.gov/demo-downloads/attendance/chronicabsenteeism19.txt,,,,chronicabsenteeism
-https://www3.cde.ca.gov/demo-downloads/attendance/chronicabsenteeism18.txt,,,,chronicabsenteeism
-https://www3.cde.ca.gov/demo-downloads/attendance/chronicabsenteeism17.txt,,,,chronicabsenteeism
-,,,test,test
+original_url,archive_url,cleaned,id,source_var,archive_date,archive_time_GMT,user_agent
+https://www3.cde.ca.gov/demo-downloads/attendance/chronicabsenteeism23.txt,https://web.archive.org/web/20240901141551/https://www3.cde.ca.gov/demo-downloads/attendance/chronicabsenteeism23.txt,,1.0,chronicabsenteeism,2024-09-01,14:15,emily
+https://www3.cde.ca.gov/demo-downloads/attendance/chronicabsenteeism22-v3.txt,https://web.archive.org/web/20240911234014/https://www3.cde.ca.gov/demo-downloads/attendance/chronicabsenteeism22-v3.txt,,1.0,chronicabsenteeism,2024-09-11,23:40,emily
+https://www3.cde.ca.gov/demo-downloads/attendance/chronicabsenteeism21.txt,https://web.archive.org/web/20240830160048/https://www3.cde.ca.gov/demo-downloads/attendance/chronicabsenteeism21.txt,,1.0,chronicabsenteeism,2024-08-30,16:00,emily
+https://www3.cde.ca.gov/demo-downloads/attendance/chronicabsenteeism19.txt,https://web.archive.org/web/20240910084107/https://www3.cde.ca.gov/demo-downloads/attendance/chronicabsenteeism19.txt,,1.0,chronicabsenteeism,2024-09-10,08:41,emily
+https://www3.cde.ca.gov/demo-downloads/attendance/chronicabsenteeism18.txt,https://web.archive.org/web/20240830160228/https://www3.cde.ca.gov/demo-downloads/attendance/chronicabsenteeism18.txt,,1.0,chronicabsenteeism,2024-08-30,16:02,emily
+https://www3.cde.ca.gov/demo-downloads/attendance/chronicabsenteeism17.txt,https://web.archive.org/web/20240830160303/https://www3.cde.ca.gov/demo-downloads/attendance/chronicabsenteeism17.txt,,1.0,chronicabsenteeism,2024-08-30,16:03,emily
