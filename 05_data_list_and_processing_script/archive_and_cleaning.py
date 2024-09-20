@@ -4,37 +4,17 @@ import pandas as pd
 from waybackpy import WaybackMachineSaveAPI
 import re
 import time
+# import archive_and_cleaning_functions.py --- something like that. 
+# define functions elsewhere and then import them to here
+# so that this script can be a lot shorter and easier to read
+
+#########################################
+############ !! IMPORTANT !! ############
+##### RUN FUNCTIONS SCRIPT FIRST!!! #####
+############ !! IMPORTANT !! ############
+#########################################
 
 ### Set WD ###
-def get_dfs_wd():
-  wd_check = None
-  while wd_check != "Yes":
-    
-    wd_list = ('\n').join(os.listdir())
-  
-    wd_prompt = f'''
-    The current working directory is
-    {os.getcwd()}.
-    
-    It contains
-    {wd_list}
-    
-    If this is the correct directory (i.e., the list of dataframes is
-    in it), please enter "Yes," with no punctuation.
-    
-    If it is not the correct directory, please enter the correct path,
-    including any "backup dots" ("..") but WITHOUT QUOTATION MARKS.
-    
-    '''
-    
-    wd_check = input(wd_prompt)
-    
-    if wd_check.lower() != "yes":
-      os.chdir(wd_check)
-    elif wd_check.lower() == "yes":
-      return 'Working directory set.'
-    
-
 get_dfs_wd()
 
 ### Get the user agent ###
@@ -77,142 +57,32 @@ for var in source_vars:
 # get a backwards copy too
 var_dict_rev = {v:k for k, v in var_dict.items()}
 
-
-
 # assign the numbers
-for var in source_vars:
-  sub_df = dfs[dfs['source_var']==var]
-  # if NONE of them are NA (isna = False = 0 -> sum(0)=0), AND all the same
-  if ((sub_df['id'].isna().sum()==0) and (len(list(sub_df['id'].unique()))==1)):
-    continue
-  elif ((sub_df['id'].isna().sum()==0) and (len(list(sub_df['id'].unique()))>1)):
-    print(f'Multiple IDs for source_var {var}.')
-    break
-  elif sub_df['id'].notna().sum()==0: # if NOBODY is populated; ALL are NA
-    rows = dfs[dfs['source_var']==var].index
-    dfs.loc[rows, 'id'] = int(var_dict_rev[var])
-  elif (
-    (sub_df['id'].isna().sum()>0) and # not all NA, some are populated
-    (len(list(sub_df['id'].unique()))>2)
-    ): # but we have a value, an NA, and a mystery entry
-          print(f'Multiple non-NA IDs for source_var {var}.')
-          break
-  elif (
-    (sub_df['id'].isna().sum()>0) and # not all NA, some are populated
-    (len(list(sub_df['id'].unique()))==2)
-    ): # we have a value, an NA, and nothing else
-      
-      # FINISH THIS LATER
-      # FILL OUT THOSE VALUES.
-
-
-  
-  sub_df['id'].isna().all():
-
-
-
-for i in dfs.loc[cond, 'id'].index:
-  dfs.loc[i, 'id'] = start_num
-  start_num += 1
-
-    
-    # define the conditions
-    # define condition 1 (no id number)
-    cond1 = dfs[dfs['id'].isna()].index
-    # define condition 2 (correct source_var)
-    cond2 = dfs[dfs['source_var']==var].index
-    # define the intersection (both conds = True)
-    cond = list(set(cond1).intersection(cond2))
-    # put it in order, JIC
-    cond.sort()
-    
-    
-
-
-
-
-
+dfs = assign_ids(dfs, source_vars, var_dict_rev)
 
 
 ### Archive them with the Wayback Machine ###
+dfs = archive(dfs)
 
-# define the condition (no archival url)
-cond = dfs['archive_url'].isna()
-
-for i in dfs[cond].index[1:]:
-  # signs of life
-  print(url)
-  # extra security
-  s = str(dfs.loc[i, 'archive_url'])
-  if (s==s.replace(' ', '') and re.match(r'https://web.archive.org/web', s)):
-    continue
-  # now here we go
-  else:
-    # define the URL to save
-    url = dfs.loc[i, 'original_url']
-
-    # create the save object
-    save_api = WaybackMachineSaveAPI(url, user_agent)
-    
-    # hedge our bets
-    try:
-      print('trying to save')
-      # save it, and gather the output url
-      saved_url = save_api.save()
-      # put that url in the df
-      dfs.loc[i, 'archive_url'] = saved_url
-      # collect the timestamp data
-      t = save_api.timestamp()
-      # put the archive date in the df
-      dfs.loc[i, 'archive_date'] = t.strftime('%Y-%M-%d')
-      # put the archive time in the df
-      dfs.loc[i, 'archive_time_GMT'] = t.strftime('%I:%M%p')
-    except Exception as e:
-      print(e)
-      continue
-    
-    print('')
-    
-    # be polite to the server
-    time.sleep(2)
-
-
-### That ^ does not quite work. ###
-### I'll come back to it later. ###
-
-### For now, specify where to pull from. ###
-
-def get_pull_urls():
-  done = False
-  
-  while done == False:
-    pull_urls = input('Pull original URLs (0) or archived URLs (1)? \n')
-    
-    if pull_urls == '0':
-      pull_urls = dfs['original_url']
-      done = True
-    elif pull_urls == '1':
-      pull_urls = dfs['archive_url']
-      done = True
-    else:
-      print('Try again, ding dong!')
-  
-  return pull_urls
-
-pull_urls = get_pull_urls()
+### JIC, specify where to pull from. ###
+pull_urls = get_pull_urls(1) # change to 0 for originals
 
 ### Create some containers
 orig_col_names = {}
 
 
 ### For each df
-for url in [pull_urls[1]]:
+for url in pull_urls:
+
+###  # Get it in and see what it's about
+
 ###  # Get its name
   name = url.split('/')[-1]
   name = name.split('.')[0]
   print('')
   print('='*15)
   print(name)
+
 ###  # Load it - let's see what we've got for seps
   failed_attempts = 0
   seps = ['\t', ',', ';']
@@ -223,31 +93,55 @@ for url in [pull_urls[1]]:
       if not df.isna().all().all():
         print(s)
         break
-    except:
+    except Exception as e:
+      print(url)
+      print(e)
       failed_attempts+=1
       continue
   
  if failed_attempts==len(seps):
    print('none of the seps worked.')
    continue
+
 ###  # Save and show some information
   orig_col_names[name] = list(df.columns)
   print('')
   print(list(df.columns), flush = True)
+
 ###  # Define a DF ID# for a suffix
-  cond = dfs[dfs['original_url']==url].index
+  cond = dfs[pull_urls==url].index
   df_id = int(dfs.loc[cond[0], 'id'])
+
 ###  # Reformat column names
-  df.columns = [
-    f"{x.lower().replace(' (', '--').replace(' ', '_').replace(')', '')}__df{df_id}" 
-    for x in df.columns]
+  # create a container
+  new_col_names = []
+  
+  # for every column name
+  for i in list(df.columns):
+    title_case = re.search(r'[a-z][A-Z]', i) # first check for TitleCase
+    while title_case != None: # gotta get 'em all!
+      letters = title_case[0] # yank the letters out of the object
+      i = i.replace(letters, letters[0]+'_'+letters[1].lower()) # insert _
+      title_case = re.search(r'[a-z][A-Z]', i) # check again
+    # once all the TitleCases are gone, do the reformatting that 
+    # used to be in the list comp, and append it to that list
+    new_col_names.append(f"{i.lower().replace(' (', '--').replace(' ', '_').replace(')', '')}__df{str(df_id).zfill(2)}")
     
-    #### TAKE THE SUFFIX OFF OF THE ONES WE'RE MERGING ON ####
-    # colname.split('__')[0]
-    
-    
+  # check my work, reassign that list to be the new column names
+  if len(list(df.columns))==len(new_col_names):
+    df.columns = new_col_names
+  else:
+    print(f'wrong number of columns after reformatting for df_id: {df_id}, {url}')
+    break
+
+###  # Clear the console for this next bit
+  clear()
+
 ###  # Print all column names
   print(df.columns, flush = True)
+
+###  # Filtering #  ###
+
 ###  # Any chance this could be easy?
   # identify aggregation columns
   agg = 'cats'
@@ -271,36 +165,50 @@ for url in [pull_urls[1]]:
       agg_cols.append(agg)
     else:
       continue 
-###  # Specify the "master" district column
-  print('')
-  master_col = []
-  while len(master_col)!=1:
-    master_col = input('Which column is the "master" district column? \n\n')
-    master_col = master_col.split(',')
-  master_col = master_col[0]
+###  # Specify "master" columns
+  # create a dictionary container
+  merge_cols = {}
+  
+  # district
+  x = master_cols(df, 'district')
+  merge_cols[x[0]] = x[1]
+  
+  # year
+  x = master_cols(df, 'year')
+  merge_cols[x[0]] = x[1]
+  
+  # check my work and remove the suffixes
+  if df.rename(columns = merge_cols).shape == df.shape:
+    df.rename(columns = merge_cols, inplace = True)
+  else:
+    print(f'something is wrong in the master column section for df_id: {df_id}, {url}')
+    break
+
 ###  # Specify the columns to "flatten" (i.e., the descriptive columns)
   print('')
   desc_cols = input('Which are the descriptive columns (to flatten)? \n\n')
   desc_cols = desc_cols.split(',')
+
 ###  # Specify the columns to preserve (i.e., the informative columns)
   print('')
   info_cols = input('Which are the informative columns (the data)? \n\n')
   info_cols = info_cols.split(',')
+
 ###  # Drop all other columns
   # everyone else goes on this list
   drop_cols = [col for col in list(df.columns) if (
-    (col != master_col) and
+    (col not in merge_cols.values()) and
     (col not in desc_cols) and
     (col not in info_cols) )]
   # create a toggle
   drop_inplace = False
   # edit the list as needed
   while drop_inplace == False:
+    print(drop_cols)
     print("""
     Would you like to drop these columns? Enter Yes to proceed, 
-    Add to add to the list, or Remove to remove
+    Add to add to the list, or Remove to remove from the list.
     """)
-    print(drop_cols)
     drop_confirm = input()
     
     if drop_confirm.lower()=='yes':
@@ -310,19 +218,110 @@ for url in [pull_urls[1]]:
       add_cols = add_cols.split(',')
       drop_cols.extend(add_cols)
     elif drop_confirm.lower()=='remove':    
-      keep_cols = input('Enter any columns to NOT drop. \n\n')
-      keep_cols = keep_cols.split(',')
-      drop_cols = [col for col in drop_cols if col not in keep_cols]    
+      remove_cols = input('Enter any columns to NOT drop. \n\n')
+      remove_cols = remove_cols.split(',')
+      drop_cols = [col for col in drop_cols if col not in remove_cols]
+    else:
+      print('You have entered an invalid string. Please try again.')
+    
+  # when that's done (the list of columns to drop is complete)
+  df.drop(columns = drop_cols, inplace = drop_inplace)
     
 ###  # For each descriptive column
   for col in desc_cols:
+
+###  #   # Create a container list that will hold all the sub_dfs
+    sub_list = []
+
 ###  #   # Specify a descriptive suffix for the overall column
-    print(f"The current column is {col}. What is its suffix?")
-    suf = input('Enter suffix: \n\n')
+    print(f"""
+    The current column is {col}. 
+    What is its overall suffix?
+    """)
+    suf1 = input('Enter suffix: \n\n')
+
 ###  #   # Specify descriptive suffixes for each level
+    col_vals = list(df[col].unique())
+    
+    suffixes = input(f""" \
+    \n {col} has the following levels: \
+    \n {col_vals} \
+    \n \
+    \n Please enter a list of suffixes corresponding to each \
+    \n of those values. Separate each suffix with a comma. Do \
+    \n NOT wrap the suffixes in quotation marks, and do NOT use \
+    \n any characters that do not belong in column names. \
+    \n \
+    \n Enter suffixes: \
+    \n """)
+    
+    # clean up that input
+    suffixes = suffixes.split(',')
+    suffixes = [s.strip() for s in suffixes]
+    # and JIC
+    suffixes = [f"{i.lower().replace(' (', '--').replace(' ', '_').replace(')', '')}" 
+      for i in suffixes]
+      
+    ### create a dictionary of suffixes
+    
+    # create a container
+    suffix_dict = {}
+    # fill it
+    for i, j in list(zip(col_vals, suffixes)):
+      print(i, j)
+      suffix_dict[i] = j
+
+###  #  Do the stuff to it
+
+# set up a counter to keep track of 
+    for i in col_vals:    
+
+###  #   # Pull out the right topic-suffix
+      suf2 = suffix_dict[i]
+
 ###  #   # Split the df apart by these levels
+      sub_df = df[df[col]==i]
+      
 ###  #   # Apply suffixes to the informative columns
+      new_sub_col_names = [f'{c}-{suf1}-{suf2}' if (c in info_cols) else c for c in sub_df.columns]
+      
+      # check my work
+      if len(new_sub_col_names)==sub_df.shape[1]:
+        sub_df.columns = new_sub_col_names
+      else:
+        print(f'''something is broken assigning col names to a sub_df.\
+        \n df_id: {df_id} \
+        \n col: {col} \
+        \n col_val level: {i} \
+        \n suf1: {suf1} \
+        \n suf2: {suf2} \
+        \n current names: {list(sub_df.columns)}, shape: {sub_df.shape} \
+        \n new names: {new_sub_col_names}, length: {len(new_sub_col_names)} \
+        \n Ending operation now.''')
+        break
+        
 ###  #   # Delete the original descriptive column
+      # safety first
+      old_shape = sub_df.shape
+      new_shape = sub_df.drop(columns = [col]).shape
+      if ((old_shape[0]==new_shape[0]) and (old_shape[1]==(new_shape[1]-1))):
+        sub_df.drop(columns = [col], inplace = True)
+      else:
+        print(f'''something is broken dropping a desc column.\
+        \n df_id: {df_id} \
+        \n col: {col} \
+        \n col_val level: {i} \
+        \n suf1: {suf1} \
+        \n suf2: {suf2} \
+        \n current names: {list(sub_df.columns)}, shape: {sub_df.shape} \
+        \n new names: {sub_df.drop(columns = [col]).columns}, shape: {sub_df.drop(columns = [col]).shape} \
+        \n Ending operation now.''')
+        break
+
+###  #   # storage the sub_df to be remerged later
+
+
+
 ###  #   # Merge the separate DFs back together on 
 ###  #   # ###  all remaining descriptive columns
   
@@ -362,3 +361,32 @@ for url in [pull_urls[1]]:
   #     except: 
   #       print('failed to load')
   #       continue
+  
+  
+# assigning ID scraps
+# for i in dfs.loc[cond, 'id'].index:
+#   dfs.loc[i, 'id'] = start_num
+#   start_num += 1
+# 
+#     
+#     # define the conditions
+#     # define condition 1 (no id number)
+#     cond1 = dfs[dfs['id'].isna()].index
+#     # define condition 2 (correct source_var)
+#     cond2 = dfs[dfs['source_var']==var].index
+#     # define the intersection (both conds = True)
+#     cond = list(set(cond1).intersection(cond2))
+#     # put it in order, JIC
+#     cond.sort()
+
+  #### TAKE THE SUFFIX OFF OF THE ONES WE'RE MERGING ON ####
+  
+  ## take 1 VVV  ##
+  # # define the types of columns that we're probably after
+  # merge_col_names = ['academic_year', 'year', 'school_year', 
+  #   'district', 'district_code', 'school_district']
+  # # look for them
+  # merge_cols = {'seed': 'dictionary'}
+  # for i in merge_col_names:
+  #   # merge_cols.extend([c.split('__')[0] for c in new_col_names if re.search(i, c)])
+  #   merge_cols[c] = c.split('__')[0] for c in new_col_names if re.search(i, c)
