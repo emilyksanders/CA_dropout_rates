@@ -3,6 +3,7 @@
 #############################
 ##### Clear the console #####
 #############################
+
 # thanks to stackoverflow
 # https://stackoverflow.com/questions/517970/how-can-i-clear-the-interpreter-console
 clear = lambda: os.system('cls')
@@ -11,6 +12,7 @@ clear = lambda: os.system('cls')
 ##################################################
 ##### Make sure we're in the right directory #####
 ##################################################
+
 def get_dfs_wd():
   wd_check = None
   while wd_check != "Yes":
@@ -43,6 +45,7 @@ def get_dfs_wd():
 ##########################################################
 ##### Assign ID numbers to each variable represented #####
 ##########################################################
+
 def assign_ids(dfs, source_vars, var_dict_rev):
   ''' Assign ID numbers to the source variables in dfs.
   dfs = the dataframe of data info
@@ -76,6 +79,7 @@ def assign_ids(dfs, source_vars, var_dict_rev):
 ###########################################
 ##### Archive URLs to Wayback Machine #####
 ###########################################
+
 # Archive all not-yet-archived URLs to Wayback Machine (my beloved)
 def archive(dfs):
 
@@ -124,9 +128,10 @@ def archive(dfs):
   return dfs
 
 
+###############################################
+##### Specify which list of URLs to clean #####
+###############################################
 
-
-## Specify which list of URLs to clean 
 # (Because the archiving wasn't working before, this is a 
 # safety valve to ensure the whole thing doesn't just break)
 def get_pull_urls():
@@ -193,7 +198,7 @@ def master_cols(df, col_type):
   master_col = master_col[0]
   
   # drop the suffix
-  master_col = master_col.split('__')
+  master_col = master_col.split('__')[0]
   
   return (master_col_orig, master_col)
   

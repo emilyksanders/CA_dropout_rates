@@ -33,14 +33,24 @@ if dfs['id'].notna().sum()==0:
   start_num = 1
 else:
   start_num = max(dfs['id'])+1
+print(start_num)
 
 ### Define categories (e.g., group DFs) ###
-dfs['source_var'] = [
+# this version will overwrite what's there
+# dfs['source_var'] = [
+#   re.match(r'^([A-Za-z]+)', u.split('/')[-1].split('.')[0])[0] 
+#   for u in dfs['original_url']]
+
+#only for the NA ones, hopefully
+cond = dfs[dfs['source_var'].isna()].index
+
+dfs.loc[cond, 'source_var'] = [
   re.match(r'^([A-Za-z]+)', u.split('/')[-1].split('.')[0])[0] 
-  for u in dfs['original_url']]
+  for u in dfs.loc[cond, 'original_url']]
   
 ### Define ID numbers ###
 source_vars = list(dfs['source_var'].unique())
+print(source_vars)
 
 # seed a dictionary
 var_dict = {'1': 'chronicabsenteeism'}
@@ -65,7 +75,7 @@ dfs = assign_ids(dfs, source_vars, var_dict_rev)
 dfs = archive(dfs)
 
 ### JIC, specify where to pull from. ###
-pull_urls = get_pull_urls(1) # change to 0 for originals
+pull_urls = get_pull_urls() # change to 0 for originals
 
 ### Create some containers
 orig_col_names = {}
@@ -178,7 +188,12 @@ for url in pull_urls:
   merge_cols[x[0]] = x[1]
   
   # check my work and remove the suffixes
-  if df.rename(columns = merge_cols).shape == df.shape:
+  # are the keys (suffixed) longer than the values (unsuffixed)?
+  # the operator is <= so this should be a sum of FALSES, = 0
+  len_check = sum([len(k) <= len(v) for k, v in merge_cols.items()])
+  
+  # check that the df is hte right shape AND that the lengths are right
+  if ((df.rename(columns = merge_cols).shape == df.shape) and (len_check==0)):
     df.rename(columns = merge_cols, inplace = True)
   else:
     print(f'something is wrong in the master column section for df_id: {df_id}, {url}')
@@ -224,8 +239,19 @@ for url in pull_urls:
     else:
       print('You have entered an invalid string. Please try again.')
     
-  # when that's done (the list of columns to drop is complete)
-  df.drop(columns = drop_cols, inplace = drop_inplace)
+  # check my work
+  now_rows = df.shape[0]
+  now_cols = df.shape[1]
+  new_rows = df.drop(columns = drop_cols).shape[0]
+  new_cols = df.drop(columns = drop_cols).shape[1]
+  
+  if ((now_rows!=new_rows) or (now_cols != new_cols+len(drop_cols))):
+    print('''something wrong with drop cols on df_id: {df_id}, url: {url}. \
+    \n drop_cols: {drop_cols}''')
+    break
+  else:
+    # when that's done (the list of columns to drop is complete)
+    df.drop(columns = drop_cols, inplace = drop_inplace)
     
 ###  # For each descriptive column
   for col in desc_cols:
@@ -234,9 +260,9 @@ for url in pull_urls:
     sub_list = []
 
 ###  #   # Specify a descriptive suffix for the overall column
-    print(f"""
-    The current column is {col}. 
-    What is its overall suffix?
+    print(f""" \
+    \n The current column is {col}. \
+    \n What is its overall suffix? \
     """)
     suf1 = input('Enter suffix: \n\n')
 
@@ -273,10 +299,10 @@ for url in pull_urls:
 
 ###  #  Do the stuff to it
 
-# set up a counter to keep track of 
+# for each level of the descriptive column...
     for i in col_vals:    
 
-###  #   # Pull out the right topic-suffix
+###  #   # Pull out the right level-suffix
       suf2 = suffix_dict[i]
 
 ###  #   # Split the df apart by these levels
@@ -319,7 +345,7 @@ for url in pull_urls:
         break
 
 ###  #   # storage the sub_df to be remerged later
-
+      
 
 
 ###  #   # Merge the separate DFs back together on 
