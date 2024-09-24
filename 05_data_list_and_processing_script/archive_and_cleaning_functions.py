@@ -1,5 +1,12 @@
 ### Define Some Helpful Friends ###
 
+### Imports ###
+import os
+import pandas as pd
+from waybackpy import WaybackMachineSaveAPI
+import re
+import time
+
 #############################
 ##### Clear the console #####
 #############################
@@ -132,24 +139,50 @@ def archive(dfs):
 ##### Specify which list of URLs to clean #####
 ###############################################
 
-# (Because the archiving wasn't working before, this is a 
-# safety valve to ensure the whole thing doesn't just break)
-def get_pull_urls():
-  done = False
-  
-  while done == False:
-    pull_urls = input('Pull original URLs (0) or archived URLs (1)? \n')
-    
-    if pull_urls == '0':
-      pull_urls = dfs['original_url']
-      done = True
-    elif pull_urls == '1':
-      pull_urls = dfs['archive_url']
-      done = True
-    else:
-      print('Try again, ding dong!')
+# schnazzier
+def get_pull_urls(pull_urls:str):
+  '''
+  Arg:
+    pull_urls (str): which column of dfs to use. Valid
+    inputs are 'original' ('o') and 'archive' ('a').
+  Return:
+    Redefines the variable pull_urls to direct to the column.
+  Raise:
+    Maybe it'll throw an error if it's not a string? We'll see.
+    It will throw an error if it's not indexable.
+    It'll yell at you if you give it an invalid string.
+  '''
+  if pull_urls[0].lower() == 'o':
+    pull_urls = dfs['original_url']
+    done = True
+  elif pull_urls[0].lower() == 'a':
+    pull_urls = dfs['archive_url']
+    done = True
+  else:
+    print('Try again, ding dong!')
   
   return pull_urls
+
+
+# old VVV
+# (Because the archiving wasn't working before, this is a 
+# safety valve to ensure the whole thing doesn't just break)
+# def get_pull_urls():
+#   done = False
+#   
+#   while done == False:
+#     pull_urls = input('Pull original URLs (0) or archived URLs (1)? \n')
+#     
+#     if pull_urls == '0':
+#       pull_urls = dfs['original_url']
+#       done = True
+#     elif pull_urls == '1':
+#       pull_urls = dfs['archive_url']
+#       done = True
+#     else:
+#       print('Try again, ding dong!')
+#   
+#   return pull_urls
 
 
 ##################################################

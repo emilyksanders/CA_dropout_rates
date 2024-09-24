@@ -4,6 +4,8 @@ import pandas as pd
 from waybackpy import WaybackMachineSaveAPI
 import re
 import time
+import requests
+import io
 # import archive_and_cleaning_functions.py --- something like that. 
 # define functions elsewhere and then import them to here
 # so that this script can be a lot shorter and easier to read
@@ -24,9 +26,12 @@ user_agent = input('Who is working on this right now? \n')
 ### Convert user agent (can run as blocks now) ###
 user_agent = user_agent.lower()
     
-### Import the list ###
+### Import the list of dfs ###
 dfs = pd.read_csv('dfs_list.csv')
 dfs.shape
+
+### Import the list of districts ###
+base_df = pd.read_csv('county-district_code_key.csv')
 
 ### Define start_num ###
 if dfs['id'].notna().sum()==0:
@@ -74,8 +79,8 @@ dfs = assign_ids(dfs, source_vars, var_dict_rev)
 ### Archive them with the Wayback Machine ###
 dfs = archive(dfs)
 
-### JIC, specify where to pull from. ###
-pull_urls = get_pull_urls() # change to 0 for originals
+### Specify where to pull from. ###
+pull_urls = get_pull_urls('archive') # 'originals' for originals
 
 ### Create some containers
 orig_col_names = {}
@@ -94,11 +99,20 @@ for url in pull_urls:
   print(name)
 
 ###  # Load it - let's see what we've got for seps
+  
+  # loading from the achive is kind of annoying. gotta do this
+  # thanks to stackoverflow (and my dad!)
+  # https://stackoverflow.com/questions/32400867/pandas-read-csv-from-url
+  t = requests.get(url).text
+  
+  # create a counter to monitor sep situation
   failed_attempts = 0
   seps = ['\t', ',', ';']
+  
+  # try and try to read it in
   for s in seps:
     try: 
-      df = pd.read_csv(url, low_memory = False, 
+      df = pd.read_csv(io.StringIO(t), low_memory = False, 
         encoding_errors='replace', sep = s)
       if not df.isna().all().all():
         print(s)
@@ -345,10 +359,12 @@ for url in pull_urls:
         break
 
 ###  #   # storage the sub_df to be remerged later
-      
-
+      sub_list.append(sub_df)      
 
 ###  #   # Merge the separate DFs back together on 
+    for i in sub_list:
+      
+
 ###  #   # ###  all remaining descriptive columns
   
 # save some of the interactive stuff to a JSON
