@@ -7,6 +7,13 @@ from waybackpy import WaybackMachineSaveAPI
 import re
 import time
 
+#####################
+##### my_date() #####
+#####################
+def my_date():
+  return datetime.now().strftime('%Y-%m-%d_h%H-m%M-s%S')
+my_date()
+
 #############################
 ##### Clear the console #####
 #############################
@@ -195,7 +202,8 @@ def master_cols(df, col_type):
   Args:
     df (pd.DataFrame) = the df we're looking at
     col_type (str) = which kind of master column we're 
-      identifying, either 'district' ('d') or 'year' ('y')
+      identifying: 'district' ('d'), 'year' ('y'), or
+      'cds_code' ('c').
   
   Raise: 
     will quit and yell at you if you give it a bad col_type
@@ -205,10 +213,12 @@ def master_cols(df, col_type):
     (the column name you entered, its unsuffixed name)
   '''
   
-  if col_type[0]=='d':
-    col_type = 'district'
-  elif col_type[0]=='y':
+  if col_type.lower()[0]=='d':
+    col_type = 'district number'
+  elif col_type.lower()[0]=='y':
     col_type = 'school year'
+  elif col_type.lower()[0]=='c':
+    col_type = 'CDS code'
   else:
     print("Bad col_type!")
     return None
@@ -224,7 +234,11 @@ def master_cols(df, col_type):
   
   # we're trying to get ONE entry
   while len(master_col)!=1:
-    master_col_orig = input('Which column is the "master" {col_type} column? \n\n')
+    master_col_orig = input('''Which column is the "master" {col_type} column? \n \
+    Enter NA if it doesn't have one.    \n\n''')
+    # allow for the possibility that it doesn't have one
+    if master_col_orig.lower()[0] = 'n':
+      return (None, None)
     # make sure dummy didn't enter a list
     master_col = master_col.split(',')
   # if it wasn't a list, then splitting it made it a list of 1. change it back.

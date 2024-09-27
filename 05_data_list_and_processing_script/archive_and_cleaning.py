@@ -75,7 +75,6 @@ var_dict_rev = {v:k for k, v in var_dict.items()}
 # assign the numbers
 dfs = assign_ids(dfs, source_vars, var_dict_rev)
 
-
 ### Archive them with the Wayback Machine ###
 dfs = archive(dfs)
 
@@ -84,7 +83,9 @@ pull_urls = get_pull_urls('archive') # 'originals' for originals
 
 ### Create some containers
 orig_col_names = {}
-
+cleaned_dfs = []
+all_merge_cols = {}
+all_suffixes = {}
 
 ### For each df
 for url in pull_urls:
@@ -97,6 +98,20 @@ for url in pull_urls:
   print('')
   print('='*15)
   print(name)
+
+###  # are you sure you want to do this?
+  cond = dfs[pull_urls==url].index
+  if dfs.loc[cond, 'cleaned']==True:
+    do_it_again = input("""\
+    This df, {name} is already marked as cleaned. If you would like to \n \
+    rerun the process, including overwriting previously defined dictionary \n \
+    entries, enter YES. Otherwise, enter NO to proceed to the next df.\n\n\n \
+    """)
+    if do_it_again != 'YES':
+      continue
+    elif do_it_again == 'YES':
+      print('Ok, here we go, overwriting stuff!')
+      time.sleep(3)
 
 ###  # Load it - let's see what we've got for seps
   
@@ -195,23 +210,47 @@ for url in pull_urls:
   
   # district
   x = master_cols(df, 'district')
-  merge_cols[x[0]] = x[1]
+  merge_cols[x[0]] = 'district'
   
   # year
   x = master_cols(df, 'year')
-  merge_cols[x[0]] = x[1]
+  merge_cols[x[0]] = 'year'
+  
+  # cds code
+  x = master_cols(df, 'cds_code')
+  merge_cols[x[0]] = 'cds_code'
+  
+  # save the merge cols
+  all_merge_cols[name] = merge_cols
   
   # check my work and remove the suffixes
-  # are the keys (suffixed) longer than the values (unsuffixed)?
+  # are the keys (suffixed) longer than the values (unsuffixed & standardized)?
   # the operator is <= so this should be a sum of FALSES, = 0
   len_check = sum([len(k) <= len(v) for k, v in merge_cols.items()])
   
-  # check that the df is hte right shape AND that the lengths are right
+  # check that the df is the right shape AND that the lengths are right
   if ((df.rename(columns = merge_cols).shape == df.shape) and (len_check==0)):
     df.rename(columns = merge_cols, inplace = True)
   else:
     print(f'something is wrong in the master column section for df_id: {df_id}, {url}')
     break
+
+###  # clean up again
+###  # Clear the console for this next bit
+  clear()
+
+###  # Print all column names
+  print(df.columns, flush = True)
+
+###  # Now let's make sure the year isn't screwed up
+  # there should only be one school year per file
+  year_check = 'cats'
+  if df['year'].nunique()!=1:
+    while year_check.lower()!='yes':
+      print(df['year'].value_counts(dropna = False))
+      print('''There appear to be multiple years. These MUST \
+      \nbe flattened before any other descriptive variable.''')
+      year_check = input('Please confirm by typing yes')
 
 ###  # Specify the columns to "flatten" (i.e., the descriptive columns)
   print('')
@@ -266,7 +305,10 @@ for url in pull_urls:
   else:
     # when that's done (the list of columns to drop is complete)
     df.drop(columns = drop_cols, inplace = drop_inplace)
-    
+
+# create a dictionary to hold ALL the suffixes that come out of this df
+  suffix_list = {}
+
 ###  # For each descriptive column
   for col in desc_cols:
 
@@ -279,6 +321,9 @@ for url in pull_urls:
     \n What is its overall suffix? \
     """)
     suf1 = input('Enter suffix: \n\n')
+    
+    # write that down
+    
 
 ###  #   # Specify descriptive suffixes for each level
     col_vals = list(df[col].unique())
@@ -310,6 +355,10 @@ for url in pull_urls:
     for i, j in list(zip(col_vals, suffixes)):
       print(i, j)
       suffix_dict[i] = j
+    
+    # save that
+    suffix_list[col] = [suf1, {suffix_dict}]
+        
 
 ###  #  Do the stuff to it
 
@@ -321,6 +370,9 @@ for url in pull_urls:
 
 ###  #   # Split the df apart by these levels
       sub_df = df[df[col]==i]
+      
+###  #   # Get a list of the non-info columns for later
+      shared_cols = [c for c in sub_df.columns if ((c not in info_cols) and (c!=col))]
       
 ###  #   # Apply suffixes to the informative columns
       new_sub_col_names = [f'{c}-{suf1}-{suf2}' if (c in info_cols) else c for c in sub_df.columns]
@@ -362,73 +414,67 @@ for url in pull_urls:
       sub_list.append(sub_df)      
 
 ###  #   # Merge the separate DFs back together on 
-    for i in sub_list:
-      
+    # define columns to merge on
+    merge_keys = ['year', 'district', 'cds_code']
+    merge_keys = [k for k in merge_keys if k in list(sub_df.columns)]
+    merge_keys = merge_keys + shared_cols
+    
+    new_df = base_df.merge(sub_list[0], 
+      how = 'outer', on = merge_keys, suffixes = (None, '+dupe'))
+    
+    for i in sub_list[1:]:
+      new_df = new_df.merge(i,
+        how = 'outer', on = merge_keys, suffixes = (None, '+dupe'))
 
-###  #   # ###  all remaining descriptive columns
-  
-# save some of the interactive stuff to a JSON
-# save it as a dictionary - i.e., 
-# 'reporting_category__dfX' -> 'type' every time
+###  #   # Save the merged, flattened df to a list 
+#             #(there'll be one df here PER desc column PER df)
+    cleaned_dfs.append(new_df)
 
-# ###  # Any chance this could be easy?  -- TAKE 1
-#   agg_cols = [col for col in list(df.columns) if 
-#     ((re.search('aggregat', col)) or (re.search('level', col)))]
-#   if len(agg_cols)>0:
-#     # show what we've got
-#     print(agg_cols)
-#     print('')
-#     # check them out
-#     agg = input("""
-#     If any of those columns are a 'level of aggregation' 
-#     column, enter its name.  Otherwise, just hit enter.
-#     """)
-#     # proceed with that info
-#     if (agg in list(df.columns)):
+# save some of the interactive stuff to a JSON; as a dictionary
+  all_suffixes[name] = [url, suffix_list]
+  # THAT'S THE LAST THING FOR EACH URL
+  # BACK TO THE TOP!!
+################################################################
+#################### !!!!! END OF LOOP !!!! ####################
+################################################################
 
-  # try: 
-  #   df = pd.read_csv(url, low_memory = False, 
-  #     encoding_errors='replace', sep = '\t')
-  #   print('tab')
-  # except:
-  #   try: 
-  #     df = pd.read_csv(url, low_memory = False, 
-  #       encoding_errors='replace', sep = ',')
-  #     print('comma')
-  #   except:
-  #     try: 
-  #       df = pd.read_csv(url, low_memory = False, 
-  #         encoding_errors='replace', sep = ';')
-  #       print('semi-colon')
-  #     except: 
-  #       print('failed to load')
-  #       continue
-  
-  
-# assigning ID scraps
-# for i in dfs.loc[cond, 'id'].index:
-#   dfs.loc[i, 'id'] = start_num
-#   start_num += 1
-# 
-#     
-#     # define the conditions
-#     # define condition 1 (no id number)
-#     cond1 = dfs[dfs['id'].isna()].index
-#     # define condition 2 (correct source_var)
-#     cond2 = dfs[dfs['source_var']==var].index
-#     # define the intersection (both conds = True)
-#     cond = list(set(cond1).intersection(cond2))
-#     # put it in order, JIC
-#     cond.sort()
+# once that huge loop is totally done, do the BIG merge of all dfs
 
-  #### TAKE THE SUFFIX OFF OF THE ONES WE'RE MERGING ON ####
-  
-  ## take 1 VVV  ##
-  # # define the types of columns that we're probably after
-  # merge_col_names = ['academic_year', 'year', 'school_year', 
-  #   'district', 'district_code', 'school_district']
-  # # look for them
-  # merge_cols = {'seed': 'dictionary'}
-  # for i in merge_col_names:
-  #   # merge_cols.extend([c.split('__')[0] for c in new_col_names if re.search(i, c)])
-  #   merge_cols[c] = c.split('__')[0] for c in new_col_names if re.search(i, c)
+# one by hand
+big_df = base_df.merge(cleaned_dfs[0], 
+  how = 'outer', on = list(base_df.columns), suffixes = (None, '+dupe')))
+
+# and the rest
+for i in cleaned_dfs[1:]:
+  big_df = big_df.merge(i, how = 'outer', 
+    on = list(base_df.columns), suffixes = (None, '+dupe')))
+
+# save that df
+# I'm terrified of how big this will be, but here we go!
+big_df.to_csv(f'../02_data_cleaned/big_df_{my_date()}_{user_agent}.csv', index = False)
+
+# save the dictionaries
+os.chdir('../04_dictionaries')
+
+f = "var_dict.json"
+with open(f, 'w', encoding = "utf-8") as file:
+  json.dump(var_dict, file, indent=2)
+
+f = "var_dict_rev.json"
+with open(f, 'w', encoding = "utf-8") as file:
+  json.dump(var_dict_rev, file, indent=2)
+
+f = "orig_col_names.json"
+with open(f, 'w', encoding = "utf-8") as file:
+  json.dump(orig_col_names, file, indent=2)
+
+f = "all_merge_cols.json"
+with open(f, 'w', encoding = "utf-8") as file:
+  json.dump(all_merge_cols, file, indent=2)
+
+f = 'all_suffixes.json'
+with open(f, 'w', encoding = "utf-8") as file:
+  json.dump(all_suffixes, file, indent=2)
+
+
+
