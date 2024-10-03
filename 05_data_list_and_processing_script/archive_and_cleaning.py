@@ -6,7 +6,9 @@ import re
 import time
 import requests
 import io
-# import archive_and_cleaning_functions.py --- something like that. 
+from archive_and_cleaning_functions import (my_date, clear, 
+  get_dfs_wd, assign_ids, archive, get_pull_urls, master_cols)
+# --- something like that. 
 # define functions elsewhere and then import them to here
 # so that this script can be a lot shorter and easier to read
 
@@ -79,7 +81,7 @@ dfs = assign_ids(dfs, source_vars, var_dict_rev)
 dfs = archive(dfs)
 
 ### Specify where to pull from. ###
-pull_urls = get_pull_urls('archive') # 'originals' for originals
+pull_urls = get_pull_urls(dfs, 'archive') # 'originals' for originals
 
 ### Create some containers
 orig_col_names = {}
@@ -100,9 +102,10 @@ for url in pull_urls:
   print(name)
 
 ###  # are you sure you want to do this?
-  cond = dfs[pull_urls==url].index
-  if dfs.loc[cond, 'cleaned']==True:
-    do_it_again = input("""\
+  # getting the ROW that corresponds to the url we're on
+  cond = dfs[pull_urls==url].index[0]
+  if dfs.at[cond, 'cleaned']==True:
+    do_it_again = input(f"""\
     This df, {name} is already marked as cleaned. If you would like to \n \
     rerun the process, including overwriting previously defined dictionary \n \
     entries, enter YES. Otherwise, enter NO to proceed to the next df.\n\n\n \
@@ -138,7 +141,7 @@ for url in pull_urls:
       failed_attempts+=1
       continue
   
- if failed_attempts==len(seps):
+  if failed_attempts==len(seps):
    print('none of the seps worked.')
    continue
 
@@ -176,9 +179,6 @@ for url in pull_urls:
 ###  # Clear the console for this next bit
   clear()
 
-###  # Print all column names
-  print(df.columns, flush = True)
-
 ###  # Filtering #  ###
 
 ###  # Any chance this could be easy?
@@ -186,6 +186,9 @@ for url in pull_urls:
   agg = 'cats'
   agg_cols = []
   while agg.lower() != 'done':
+    # Print all column names
+    print(df.columns, flush = True)
+    # ask for levels of aggregation
     agg = input("""
       If any of those columns are a 'level of aggregation' 
       column, enter its name.  One at a time, please.  When 
@@ -210,15 +213,23 @@ for url in pull_urls:
   
   # district
   x = master_cols(df, 'district')
-  merge_cols[x[0]] = 'district'
+  if x is not None:
+    merge_cols[x[0]] = 'district'
   
   # year
   x = master_cols(df, 'year')
-  merge_cols[x[0]] = 'year'
+  if x is not None:
+    merge_cols[x[0]] = 'year'
   
   # cds code
   x = master_cols(df, 'cds_code')
-  merge_cols[x[0]] = 'cds_code'
+  if x is not None:
+    merge_cols[x[0]] = 'cds_code'
+  
+  # county
+  x = master_cols(df, 'county')
+  if x is not None:
+    merge_cols[x[0]] = 'county'
   
   # save the merge cols
   all_merge_cols[name] = merge_cols
@@ -256,6 +267,7 @@ for url in pull_urls:
   print('')
   desc_cols = input('Which are the descriptive columns (to flatten)? \n\n')
   desc_cols = desc_cols.split(',')
+  ###  add syntax to deal with quotation marks and spaces ###
 
 ###  # Specify the columns to preserve (i.e., the informative columns)
   print('')
@@ -357,7 +369,7 @@ for url in pull_urls:
       suffix_dict[i] = j
     
     # save that
-    suffix_list[col] = [suf1, {suffix_dict}]
+    suffix_list[col] = [suf1, suffix_dict]
         
 
 ###  #  Do the stuff to it
@@ -442,12 +454,12 @@ for url in pull_urls:
 
 # one by hand
 big_df = base_df.merge(cleaned_dfs[0], 
-  how = 'outer', on = list(base_df.columns), suffixes = (None, '+dupe')))
+  how = 'outer', on = list(base_df.columns), suffixes = (None, '+dupe'))
 
 # and the rest
 for i in cleaned_dfs[1:]:
   big_df = big_df.merge(i, how = 'outer', 
-    on = list(base_df.columns), suffixes = (None, '+dupe')))
+    on = list(base_df.columns), suffixes = (None, '+dupe'))
 
 # save that df
 # I'm terrified of how big this will be, but here we go!

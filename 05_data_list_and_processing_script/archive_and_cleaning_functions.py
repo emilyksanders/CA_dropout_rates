@@ -11,6 +11,7 @@ import time
 ##### my_date() #####
 #####################
 def my_date():
+  from datetime import datetime, date, time
   return datetime.now().strftime('%Y-%m-%d_h%H-m%M-s%S')
 my_date()
 
@@ -147,9 +148,10 @@ def archive(dfs):
 ###############################################
 
 # schnazzier
-def get_pull_urls(pull_urls:str):
+def get_pull_urls(dfs, pull_urls:str):
   '''
   Arg:
+    dfs (dataframe): the dataframe with the list of urls
     pull_urls (str): which column of dfs to use. Valid
     inputs are 'original' ('o') and 'archive' ('a').
   Return:
@@ -217,8 +219,10 @@ def master_cols(df, col_type):
     col_type = 'district number'
   elif col_type.lower()[0]=='y':
     col_type = 'school year'
-  elif col_type.lower()[0]=='c':
+  elif col_type.lower()[:2]=='cd':
     col_type = 'CDS code'
+  elif col_type.lower()[:2]=='co':
+    col_type = 'county'
   else:
     print("Bad col_type!")
     return None
@@ -232,15 +236,18 @@ def master_cols(df, col_type):
   # create container
   master_col = []
   
+  ###### This code is very fragile. ######
+  ###### One typo could crash the entire loop. ######
+  
   # we're trying to get ONE entry
   while len(master_col)!=1:
-    master_col_orig = input('''Which column is the "master" {col_type} column? \n \
+    master_col_orig = input(f'''Which column is the "master" {col_type} column? \n \
     Enter NA if it doesn't have one.    \n\n''')
     # allow for the possibility that it doesn't have one
-    if master_col_orig.lower()[0] = 'n':
-      return (None, None)
+    if master_col_orig.lower()[0] == 'n':
+      return None
     # make sure dummy didn't enter a list
-    master_col = master_col.split(',')
+    master_col = master_col_orig.split(',')
   # if it wasn't a list, then splitting it made it a list of 1. change it back.
   master_col = master_col[0]
   
