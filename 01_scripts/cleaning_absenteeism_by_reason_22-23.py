@@ -293,7 +293,7 @@ absent_remade.shape
 # I'd say that should do it!
 os.getcwd()
 # os.mkdir('02_data/eks_new/cleaned')
-absent_remade.to_csv('02_data/eks_new/cleaned/absenteeism-by-reason_22-23')
+absent_remade.to_csv('02_data/eks_new/cleaned/absenteeism-by-reason_22-23.csv', index = False)
 
 # # rename columns
 # for i in cats_list:
