@@ -6,6 +6,7 @@ import re
 import time
 import requests
 import io
+import json
 from archive_and_cleaning_functions import (my_date, clear, 
   get_dfs_wd, assign_ids, archive, get_pull_urls, master_cols)
 # --- something like that. 
@@ -153,6 +154,16 @@ for url in pull_urls:
 ###  # Define a DF ID# for a suffix
   cond = dfs[pull_urls==url].index
   df_id = int(dfs.loc[cond[0], 'id'])
+  
+###  # Create a file to save out the answers to the prompts
+  config_file = f'config_files/config_df{str(df_id).zfill(2)}_{name}.json'
+  
+  # test if it exists
+  try:
+    with open(config_file, "r", encoding="utf-8") as file:
+      config_dict = json.load(file)
+  except:
+    config_dict = {}
 
 ###  # Reformat column names
   # create a container
@@ -185,6 +196,15 @@ for url in pull_urls:
   # identify aggregation columns
   agg = 'cats'
   agg_cols = []
+  
+  # see if we already have these saved, or create a new one
+  agg_answers = config_dict.get('agg_answers', {})
+  print('')
+  print(agg_answers)
+  print('')
+  
+  # used pre-saved ones if available, or make new
+  
   while agg.lower() != 'done':
     # Print all column names
     print(df.columns, flush = True)
@@ -198,6 +218,7 @@ for url in pull_urls:
       # pick the level
       print(df[agg].value_counts(dropna = False), flush = True)   # may have to wait for this
       level = input('Which of these levels do you want? \n\n')
+      agg_answers[agg] = level
       # narrow the df
       df = df[df[agg]==level]
       # sanity check
@@ -206,7 +227,15 @@ for url in pull_urls:
       # set these guys up for dropping
       agg_cols.append(agg)
     else:
-      continue 
+      continue
+  
+  # add this dictionary as an entry in the overall dictionary
+  config_dict['agg_answers'] = agg_answers
+  
+  # save the dictionary
+  with open (config_file, "w", encoding = "utf-8") as file:
+    json.dump(config_dict, file, indent = 2)
+  
 ###  # Specify "master" columns
   # create a dictionary container
   merge_cols = {}
@@ -408,7 +437,7 @@ for url in pull_urls:
       # safety first
       old_shape = sub_df.shape
       new_shape = sub_df.drop(columns = [col]).shape
-      if ((old_shape[0]==new_shape[0]) and (old_shape[1]==(new_shape[1]-1))):
+      if ((old_shape[0]==new_shape[0]) and (old_shape[1]==(new_shape[1]+1))):
         sub_df.drop(columns = [col], inplace = True)
       else:
         print(f'''something is broken dropping a desc column.\
