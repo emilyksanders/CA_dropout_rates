@@ -1,0 +1,5 @@
+INPUT:
+['GF', 'GM', 'GR13', 'GR46', 'GR78', 'GR912', 'GRK8', 'GRKN', 'GX', 'RA', 'RB', 'RD', 'RF', 'RH', 'RI', 'RP', 'RT', 'RW', 'SD', 'SE', 'SF', 'SH', 'SM', 'SS', 'TA']
+
+OUTPUT:
+female,male,gr123,gr456,gr78,gr9to12,grk8,grk,nonbinary,asian,black,norace,filipino,latine,native,pacifici,multirace,white,disabled,esl,foster,homeless,migrant,poor,total

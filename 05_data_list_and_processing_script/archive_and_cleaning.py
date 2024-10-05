@@ -20,14 +20,14 @@ from archive_and_cleaning_functions import (my_date, clear,
 #########################################
 
 ### Set WD ###
-get_dfs_wd()
+# get_dfs_wd() -- if the imports work, it's right
 
 ### Get the user agent ###
 # (we don't need this just yet, but input() is annoying)
-user_agent = input('Who is working on this right now? \n')
+user_agent = input('Who is working on this right now? \n').lower()
 
 ### Convert user agent (can run as blocks now) ###
-user_agent = user_agent.lower()
+# user_agent = user_agent.lower()
     
 ### Import the list of dfs ###
 dfs = pd.read_csv('dfs_list.csv')
@@ -35,6 +35,8 @@ dfs.shape
 
 ### Import the list of districts ###
 base_df = pd.read_csv('county-district_code_key.csv')
+
+#### PUT IN THE COUNTY CODE, NOT NAME ####
 
 ### Define start_num ###
 if dfs['id'].notna().sum()==0:
@@ -72,7 +74,7 @@ for var in source_vars:
     var_dict[str(start_num)] = var
     start_num += 1
 
-# get a backwards copy too
+# get a backwards copy too -- NEED THIS???
 var_dict_rev = {v:k for k, v in var_dict.items()}
 
 # assign the numbers
