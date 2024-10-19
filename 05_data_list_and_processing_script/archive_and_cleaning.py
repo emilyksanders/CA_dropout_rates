@@ -7,8 +7,10 @@ import time
 import requests
 import io
 import json
-from archive_and_cleaning_functions import (my_date, clear, 
-  get_dfs_wd, assign_ids, archive, get_pull_urls, master_cols)
+# os.chdir('05_data_list_and_processing_script/')
+from archive_and_cleaning_functions import (my_date, 
+  clear, get_dfs_wd, assign_ids, archive, 
+  get_pull_urls, master_cols, default_suffixes)
 # --- something like that. 
 # define functions elsewhere and then import them to here
 # so that this script can be a lot shorter and easier to read
@@ -43,7 +45,7 @@ if dfs['id'].notna().sum()==0:
   start_num = 1
 else:
   start_num = max(dfs['id'])+1
-print(start_num)
+print(f'start_num is {start_num}')
 
 ### Define categories (e.g., group DFs) ###
 # this version will overwrite what's there
@@ -60,7 +62,7 @@ dfs.loc[cond, 'source_var'] = [
   
 ### Define ID numbers ###
 source_vars = list(dfs['source_var'].unique())
-print(source_vars)
+print(f'source_vars is {source_vars}')
 
 # seed a dictionary
 var_dict = {'1': 'chronicabsenteeism'}
@@ -92,6 +94,10 @@ cleaned_dfs = []
 all_merge_cols = {}
 all_suffixes = {}
 
+### Define the most common "reporting category" prefixes
+
+
+
 ### For each df
 for url in pull_urls:
 
@@ -102,7 +108,7 @@ for url in pull_urls:
   name = name.split('.')[0]
   print('')
   print('='*15)
-  print(name)
+  print(f'name is {name}')
 
 ###  # are you sure you want to do this?
   # getting the ROW that corresponds to the url we're on
@@ -159,7 +165,7 @@ for url in pull_urls:
   
 ###  # Create a file to save out the answers to the prompts
   config_file = f'config_files/config_df{str(df_id).zfill(2)}_{name}.json'
-  
+
   # test if it exists
   try:
     with open(config_file, "r", encoding="utf-8") as file:
@@ -369,35 +375,76 @@ for url in pull_urls:
     
 
 ###  #   # Specify descriptive suffixes for each level
+
+    # get a list of all the values in the column
     col_vals = list(df[col].unique())
+
+    # get the pre-defined ones
+    pre_suffs = [i for i in col_vals if i in default_suffixes.keys()]
+    new_suffs = [i for i in col_vals if i not in default_suffixes.keys()]
     
-    suffixes = input(f""" \
-    \n {col} has the following levels: \
-    \n {col_vals} \
-    \n \
-    \n Please enter a list of suffixes corresponding to each \
-    \n of those values. Separate each suffix with a comma. Do \
-    \n NOT wrap the suffixes in quotation marks, and do NOT use \
-    \n any characters that do not belong in column names. \
-    \n \
-    \n Enter suffixes: \
-    \n """)
-    
-    # clean up that input
-    suffixes = suffixes.split(',')
-    suffixes = [s.strip() for s in suffixes]
-    # and JIC
-    suffixes = [f"{i.lower().replace(' (', '--').replace(' ', '_').replace(')', '')}" 
-      for i in suffixes]
-      
-    ### create a dictionary of suffixes
-    
-    # create a container
+    # create basic suffix dictionart
     suffix_dict = {}
-    # fill it
-    for i, j in list(zip(col_vals, suffixes)):
-      print(i, j)
-      suffix_dict[i] = j
+    for i in pre_suffs:
+      suffix_dict[i] = default_suffixes[i]
+    
+    # clear the console
+    clear()
+    
+    # address the ones with suffixes assigned
+    print('The column has these values with pre-defined suffixes:')
+    for i in pre_suffs:
+      print(f'{i}: {default_suffixes[i]}')
+    change_suffs = input('''
+    If you need to change any of those, enter them here.\
+    \n Separate them with commas, but do not use spaces.\
+    \n Otherwise, enter "no"''')
+    
+    if change_suffs.lower()!='no':
+      # clean up that input
+      change_suffs = change_suffs.split(',')
+      change_suffs = [s.strip() for s in change_suffs]
+      
+      # get the new suffixes
+      print('put in the new suffixes')
+      for i in change_suffs:
+        suffix_dict[i] = input(f'{i}: ')
+    
+    # now the new ones
+    print('The column has these values withOUT pre-defined suffixes:')
+    print(new_suffs)
+    if len(new_suffs)!=0:
+      print('put in the new suffixes')
+      for i in new_suffs:
+        suffix_dict[i] = input(f'{i}: ')
+    
+    # suffixes = input(f""" \
+    # \n {col} has the following levels: \
+    # \n {col_vals} \
+    # \n \
+    # \n Please enter a list of suffixes corresponding to each \
+    # \n of those values. Separate each suffix with a comma. Do \
+    # \n NOT wrap the suffixes in quotation marks, and do NOT use \
+    # \n any characters that do not belong in column names. \
+    # \n \
+    # \n Enter suffixes: \
+    # \n """)
+    # 
+    # # clean up that input
+    # suffixes = suffixes.split(',')
+    # suffixes = [s.strip() for s in suffixes]
+    # # and JIC
+    # suffixes = [f"{i.lower().replace(' (', '--').replace(' ', '_').replace(')', '')}" 
+    #   for i in suffixes]
+    #   
+    # ### create a dictionary of suffixes
+    # 
+    # # create a container
+    # suffix_dict = {}
+    # # fill it
+    # for i, j in list(zip(col_vals, suffixes)):
+    #   print(i, j)
+    #   suffix_dict[i] = j
     
     # save that
     suffix_list[col] = [suf1, suffix_dict]
@@ -458,12 +505,24 @@ for url in pull_urls:
 
 ###  #   # Merge the separate DFs back together on 
     # define columns to merge on
-    merge_keys = ['year', 'district', 'cds_code']
+    
+    # the main 4
+    merge_keys = ['year', 'cds_code', 'county', 'district']
+    # drop any it doesn't have
     merge_keys = [k for k in merge_keys if k in list(sub_df.columns)]
+    # drop year for the first round
+    first_merge_keys = merge_keys.copy()
+    first_merge_keys.remove('year')
+    # add any other columns they have in common
+    shared_cols = [c for c in shared_cols if c not in merge_keys]
     merge_keys = merge_keys + shared_cols
     
+    
+    print(f'merge_keys are {merge_keys}')
+    print(f'first_merge_keys are {first_merge_keys}')
+    
     new_df = base_df.merge(sub_list[0], 
-      how = 'outer', on = merge_keys, suffixes = (None, '+dupe'))
+      how = 'outer', on = first_merge_keys, suffixes = (None, '+dupe'))
     
     for i in sub_list[1:]:
       new_df = new_df.merge(i,

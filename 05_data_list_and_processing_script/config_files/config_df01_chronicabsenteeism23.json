@@ -1,5 +1,7 @@
 {
   "agg_answers": {
-    "aggregate_level__df01": "D"
+    "aggregate_level__df01": "D",
+    "dass__df01": "All",
+    "charter_school__df01": "All"
   }
 }

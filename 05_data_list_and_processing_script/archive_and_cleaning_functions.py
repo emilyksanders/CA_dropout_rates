@@ -216,13 +216,13 @@ def master_cols(df, col_type):
   '''
   
   if col_type.lower()[0]=='d':
-    col_type = 'district number'
+    col_type = 'district NUMBER'
   elif col_type.lower()[0]=='y':
     col_type = 'school year'
   elif col_type.lower()[:2]=='cd':
     col_type = 'CDS code'
   elif col_type.lower()[:2]=='co':
-    col_type = 'county'
+    col_type = 'county NAME'
   else:
     print("Bad col_type!")
     return None
@@ -255,4 +255,37 @@ def master_cols(df, col_type):
   master_col = master_col.split('__')[0]
   
   return (master_col_orig, master_col)
+
+
+#######################################
+##### Default Suffixes Dictionary #####
+#######################################
+default_suffixes = {'RB': 'black',
+'RI': 'native',
+'RA': 'asian',
+'RF': 'filipino',
+'RH': 'latine',
+'RD': 'no_race',
+'RP': 'pacific',
+'RT': 'mutli_race',
+'RW': 'white',
+'GM': 'male',
+'GF': 'female',
+'GX': 'nonbin',
+'GZ': 'no_gender',
+'SE': 'esl_ell',
+'SD': 'disabled',
+'SS': 'poor',
+'SM': 'migrant',
+'SF': 'foster',
+'SH': 'homeless',
+'GRKN': 'gr_k',
+'GR13': 'gr_1–3',
+'GR46': 'gr_4–6',
+'GR78': 'gr_7–8',
+'GRK8': 'gr_K–8',
+'GR912': 'gr_9–12',
+'CAY': 'chron_absent',
+'CAN': 'not_chron_absent',
+'TA': 'total'}
   
