@@ -204,8 +204,9 @@ def master_cols(df, col_type):
   Args:
     df (pd.DataFrame) = the df we're looking at
     col_type (str) = which kind of master column we're 
-      identifying: 'district' ('d'), 'year' ('y'), or
-      'cds_code' ('c').
+      identifying: 'district name' ('dn'), 'district code' ('dc'),
+      'county name' ('cn'), 'county code' ('cc'),
+      'year' ('y'), or 'cds_code' ('c').
   
   Raise: 
     will quit and yell at you if you give it a bad col_type
@@ -215,13 +216,17 @@ def master_cols(df, col_type):
     (the column name you entered, its unsuffixed name)
   '''
   
-  if col_type.lower()[0]=='d':
-    col_type = 'district NUMBER'
-  elif col_type.lower()[0]=='y':
+  if col_type.lower()[0]=='y':
     col_type = 'school year'
   elif col_type.lower()[:2]=='cd':
     col_type = 'CDS code'
-  elif col_type.lower()[:2]=='co':
+  elif col_type.lower()=='district code':
+    col_type = 'district CODE'
+  elif col_type.lower()=='district name':
+    col_type = 'district NAME'
+  elif col_type.lower()=='county code':
+    col_type = 'county CODE'
+  elif col_type.lower()=='county name':
     col_type = 'county NAME'
   else:
     print("Bad col_type!")
@@ -244,7 +249,7 @@ def master_cols(df, col_type):
     master_col_orig = input(f'''Which column is the "master" {col_type} column? \n \
     Enter NA if it doesn't have one.    \n\n''')
     # allow for the possibility that it doesn't have one
-    if master_col_orig.lower()[0] == 'n':
+    if master_col_orig.lower() == 'na':
       return None
     # make sure dummy didn't enter a list
     master_col = master_col_orig.split(',')

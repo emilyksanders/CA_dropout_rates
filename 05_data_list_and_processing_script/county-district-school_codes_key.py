@@ -4,7 +4,8 @@
 cds_key = pd.read_csv(
   './../02_data_a_ignore/key_to_school_and_district_names.txt',
   sep = '\t', encoding_errors = 'replace', 
-  low_memory = False, na_values = '*')
+  low_memory = False, na_values = '*',
+  dtype = 'object')  # added post hoc; see discovery below
 cds_key.shape
 cds_key.columns
 
@@ -24,7 +25,7 @@ cds_key['cds_code'] = [(str(a).zfill(14))[:7] for a in cds_key['CDSCode']]  # an
 cds_key.drop(columns = ['CDSCode'], inplace = True)
 cds_key.shape
 
-cds_key.groupby(cds_key['District'])['cds_code'].nunique()[x]
+cds_key.groupby(cds_key['District'])['cds_code'].nunique()[lambda x: x>1]
 
 # # look for defunct schools
 # closed_schools = cds_key[cds_key['StatusType']=='Closed']
@@ -54,7 +55,15 @@ for i in cds_key.columns:
   print('')
 
 cds_key = cds_key.loc[:, ['cds_code', 'County', 'District', 'NCESDist']]
-cds_key.columns = ['cds_code', 'county', 'district', 'nces_code']
+cds_key.columns = ['cds_code', 'county_name', 'district_name', 'nces_code']
+
+# pull out county and district numbers
+cds_key['county_code'] = [i[:2] for i in cds_key['cds_code']]
+cds_key['district_code'] = [i[2:] for i in cds_key['cds_code']]
+
+# reorder columns
+cds_key = cds_key.loc[:, ['cds_code', 'county_code', 'county_name', 'district_code', 'district_name', 'nces_code']]
+
 cds_key.to_csv('county-district_code_key.csv', index = False)
 
 #### DON'T LET IT READ IT IN AS AN INTEGER!!! ####
@@ -81,3 +90,12 @@ read_in_cds_key = pd.read_csv('county-district_code_key.csv',
 
 
 test_cds = cds_key[cds_key['District']=='Walnut Creek Elementary']
+
+
+## coming back for more!!
+
+base_df.info()
+
+
+
+

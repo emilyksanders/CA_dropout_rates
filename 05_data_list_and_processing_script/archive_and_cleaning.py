@@ -1,4 +1,4 @@
-### Imports ###
+### Imports, part 1 ###
 import os
 import pandas as pd
 from waybackpy import WaybackMachineSaveAPI
@@ -7,7 +7,21 @@ import time
 import requests
 import io
 import json
-# os.chdir('05_data_list_and_processing_script/')
+
+
+######## NOTE 11/8/24 
+### YOU NEED TO CONVERT THE COUNTY AND DISTRICT CODES TO 
+### CHARACTERS WHEN YOU READ IT IN AND YOU NEED TO DO 
+### ZFILL TO MAKE SURE IT HAS THE RIGHT NUMBER OF DIGITS
+
+
+### Working Directory ###
+try:
+  os.chdir('05_data_list_and_processing_script/')
+except:
+  pass
+
+### Imports, part 2 ###
 from archive_and_cleaning_functions import (my_date, 
   clear, get_dfs_wd, assign_ids, archive, 
   get_pull_urls, master_cols, default_suffixes)
@@ -36,7 +50,8 @@ dfs = pd.read_csv('dfs_list.csv')
 dfs.shape
 
 ### Import the list of districts ###
-base_df = pd.read_csv('county-district_code_key.csv')
+base_df = pd.read_csv('county-district_code_key.csv', 
+  dtype = 'object')
 
 #### PUT IN THE COUNTY CODE, NOT NAME ####
 
@@ -248,11 +263,6 @@ for url in pull_urls:
   # create a dictionary container
   merge_cols = {}
   
-  # district
-  x = master_cols(df, 'district')
-  if x is not None:
-    merge_cols[x[0]] = 'district'
-  
   # year
   x = master_cols(df, 'year')
   if x is not None:
@@ -260,13 +270,33 @@ for url in pull_urls:
   
   # cds code
   x = master_cols(df, 'cds_code')
-  if x is not None:
+  if x is not None:  # NOT none means it HAS a cds code, skip the rest
     merge_cols[x[0]] = 'cds_code'
   
-  # county
-  x = master_cols(df, 'county')
-  if x is not None:
-    merge_cols[x[0]] = 'county'
+  # if it has a cds code, you don't need anything else.
+  # the base_df already has the rest of the info in it
+  if x is None: # IS none means it does NOT have a cds code
+    #then keep going
+    
+    # district code
+    x = master_cols(df, 'district code')
+    if x is not None:
+      merge_cols[x[0]] = 'district_code'
+      
+    # district name
+    x = master_cols(df, 'district name')
+    if x is not None:
+      merge_cols[x[0]] = 'district_name'
+      
+    # county code
+    x = master_cols(df, 'county code')
+    if x is not None:
+      merge_cols[x[0]] = 'county_code'
+    
+    # county name
+    x = master_cols(df, 'county name')
+    if x is not None:
+      merge_cols[x[0]] = 'county_name'
   
   # save the merge cols
   all_merge_cols[name] = merge_cols
@@ -507,7 +537,7 @@ for url in pull_urls:
     # define columns to merge on
     
     # the main 4
-    merge_keys = ['year', 'cds_code', 'county', 'district']
+    merge_keys = ['year', 'cds_code', 'county_code', 'district_code']
     # drop any it doesn't have
     merge_keys = [k for k in merge_keys if k in list(sub_df.columns)]
     # drop year for the first round
